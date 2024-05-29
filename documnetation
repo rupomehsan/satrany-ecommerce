@@ -1,0 +1,104 @@
+https://laravel.com/docs/6.x/frontend
+
+composer require laravel/ui
+
+php artisan ui vue
+
+php artisan ui vue --auth
+
+npm install  && npm run dev
+
+
+-------------
+all country details api
+https://restcountries.com/v3.1/all
+single country details
+https://restcountries.com/v3.1/name/Bangladesh
+
+
+
+@push('custom-css')
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+@endpush
+@push('custom-js')
+    <script src="{{ asset('frontend/js/vue.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript">
+        // Default Configuration
+        $(document).ready(function() {
+            toastr.options = {
+                'closeButton': true,
+                'debug': false,
+                'newestOnTop': false,
+                'progressBar': false,
+                'positionClass': 'toast-top-right',
+                'preventDuplicates': false,
+                'showDuration': '1000',
+                'hideDuration': '1000',
+                'timeOut': '5000',
+                'extendedTimeOut': '1000',
+                'showEasing': 'swing',
+                'hideEasing': 'linear',
+                'showMethod': 'fadeIn',
+                'hideMethod': 'fadeOut',
+            }
+        });
+    </script>
+    <script>
+        new Vue({
+            el: '#mainWrapper',
+
+            methods: {
+                // async getAllBlogs() {
+                //     const response = await axios.get('/api/get-all-blogs?get_all=1');
+                //     if (response.data.status === 'success') {
+                //         this.allBlogs = response.data?.data
+                //     }
+                // },
+                // async getAllProjects() {
+                //     const response = await axios.get('/api/v1/projects?get_all=1');
+                //     if (response.data.status === 'success') {
+                //         this.allProjects = response.data?.data
+                //     }
+                // }
+
+                addToCart: async function(productId) {
+                    const response = await axios.post('/api/v1/add-to-cart', {
+                        productId: productId
+                    });
+
+                    if (response.data.status === 'success') {
+                        toastr.success(response.data.message);
+                    }
+                },
+                addToWishList: async function(productId) {
+                    const response = await axios.post('/api/v1/add-to-wish-list', {
+                        productId: productId
+                    });
+
+                    if (response.data.status === 'success') {
+                        toastr.success(response.data.message);
+                    }
+                    if (response.data.status === 'warning') {
+                        toastr.warning(response.data.message);
+                    }
+                },
+                addToCompareList: async function(productId) {
+                    const response = await axios.post('/api/v1/add-to-compare-list', {
+                        productId: productId
+                    });
+
+                    if (response.data.status === 'success') {
+                        toastr.success(response.data.message);
+                    }
+                    if (response.data.status === 'warning') {
+                        toastr.warning(response.data.message);
+                    }
+                }
+
+            }
+        })
+    </script>
+@endpush
