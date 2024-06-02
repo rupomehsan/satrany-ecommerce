@@ -20,33 +20,7 @@
                     </ul>
                 </div>
 
-                <div class="accordion" id="languageMenu">
-                    <div class="accordion-item">
-                        <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                            English
-                        </button>
-                        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#languageMenu">
-                            <ul>
-                                <li><a href="{{ route('product.details', 'slug') }}">France</a></li>
-                                <li><a href="{{ route('product.details', 'slug') }}">Germany</a></li>
-                                <li><a href="{{ route('product.details', 'slug') }}">Japanese</a></li>
-                            </ul>
-                        </div>
-                    </div>
 
-                    <div class="accordion-item">
-                        <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                            USD
-                        </button>
-                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#languageMenu">
-                            <ul>
-                                <li><a href="{{ route('product.details', 'slug') }}">EUR - Euro</a></li>
-                                <li><a href="{{ route('product.details', 'slug') }}">GBP - British Pound</a></li>
-                                <li><a href="{{ route('product.details', 'slug') }}">INR - Indian Rupee</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="mobail-menu">
                     <nav class="offcanvas-menu">
@@ -227,15 +201,8 @@
         <!-- slider area start -->
         <div class="container-fluid clearfix">
             <div class="row justify-content-end">
-                <div class=" col-lg-8">
-                    <div class="slider-area ">
-                        <div id="slider-active">
-                            <img src="frontend/img/slider/slider-1.jpg" alt="" title="#active1" />
-                            <img src="frontend/img/slider/slider-2.jpg" alt="" title="#active2" />
-                            <img src="frontend/img/slider/slider-3.jpg" alt="" title="#active3" />
-                        </div>
-
-                    </div>
+                <div class=" col-lg-8" id="bannerSection">
+                    <banner-slider></banner-slider>
                 </div>
             </div>
         </div>
@@ -302,9 +269,17 @@
                         <!-- banner-area end -->
                         <!-- tab-area start -->
                         <div class="tab-area box-shadow bg-fff" id="mainWrapper">
-                            <div class="product-title home3-bg text-uppercase">
-                                <i class="fa fa-check-square-o icon home3-bg2"></i>
-                                <h3>Featured Products</h3>
+                            <div class="product-title home3-bg text-uppercase d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="fa fa-check-square-o icon home3-bg2"></i>
+                                    <h3>Featured Products</h3>
+                                </div>
+                                <div >
+                                   <a href="products" class="border border-secondary text-white p-2 mx-2 text-bold pbg fw-bold text-capitalize" >
+                                   See All Products
+                                    </a>
+                                </div>
+
                             </div>
                             <div id="Home">
                                  <feature-product></feature-product>

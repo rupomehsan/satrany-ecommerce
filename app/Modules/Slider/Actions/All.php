@@ -22,11 +22,9 @@ class All
                 $data = $data->where('title', 'like', '%' . request()->input('search') . '%');
             }
 
-            if (request()->has('get_all') && (int)request()->input('get_all') === 1) {
-                $data = $data->with($with)->where($condition)->latest()->get();
-            } else {
-                $data = $data->with($with)->where($condition)->latest()->paginate($offset);
-            }
+
+            $data = $data->with($with)->where($condition)->limit(5)->get();
+
             return entityResponse($data);
         } catch (\Exception $e) {
             return messageResponse($e->getMessage(), 500, 'server_error');

@@ -39,7 +39,7 @@ class Controller extends ControllersController
         return $data;
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
         $data = Delete::execute($id);
         return $data;

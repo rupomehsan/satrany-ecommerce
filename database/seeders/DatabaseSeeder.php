@@ -15,7 +15,8 @@ use App\Modules\ProductManagement\ProductCategory\Database\Seeder as ProductCate
 use App\Modules\ProductManagement\ProductBrand\Database\Seeder as ProductBrandSeeder;
 use App\Modules\ProductManagement\ProductMenufacturer\Database\Seeder as ProductMenufacturerSeeder;
 use App\Modules\ProductManagement\Product\Database\Seeder as ProductSeeder;
-
+//slider seeder
+use App\Modules\Slider\Database\Seeder as SliderSeeder;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -35,6 +36,8 @@ class DatabaseSeeder extends Seeder
             ProductBrandSeeder::class,
             ProductMenufacturerSeeder::class,
             ProductSeeder::class,
+            //slider seeder
+            SliderSeeder::class,
         ]);
     }
 }

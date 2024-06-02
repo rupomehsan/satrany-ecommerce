@@ -17,7 +17,7 @@
                 </div>
 
                 <div id="Card">
-                    <product-cards name="cart"></product-cards>
+                    <card-products name="cart"></card-products>
                 </div>
 
 

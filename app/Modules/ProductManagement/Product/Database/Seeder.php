@@ -395,14 +395,10 @@ class Seeder extends SeederClass
                 'is_returnable' => rand(0, 1),
                 'expiration_days' => Carbon::now()->addMonths(30)->toDateString(),
                 // 'purchase_account' => facker()->name,
-
                 'discount_type' => "flat",
                 'discount_amount' => $discountPrice,
-
                 'price_type' => "single",
-
                 'purchase_price' => $regularPrice - 6,
-
                 'customer_sales_price' => $regularPrice,
                 'retailer_sales_price' => $regularPrice - 5,
                 'minimum_sale_price' => $regularPrice - 10,

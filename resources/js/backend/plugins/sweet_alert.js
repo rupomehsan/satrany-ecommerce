@@ -15,6 +15,12 @@ window.s_alert = (title = "success", icon = "success") => {
         title,
     });
 };
+window.w_alert = (title = "warning", icon = "warning") => {
+    Toast.fire({
+        icon,
+        title,
+    });
+};
 window.s_confirm = async (
     title = "Are you sure?",
     confirmButtonText = "Yes, do it!",

@@ -99,7 +99,7 @@ h6 {
 
 a {
     transition: all 0.3s ease 0s;
-    text-decoration: none;
+    text-decoration: none !important;
     color: #444;
 }
 
@@ -111,7 +111,11 @@ a:hover {
 a:active {
     color: none;
 }
-
+.active-link{
+    color: #ff0027 !important;
+    font-weight: 800 !important;
+    font-size: 14px !important;
+}
 a:active,
 a:hover,
 a:focus {
