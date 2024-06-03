@@ -28,9 +28,10 @@
     <link href="{{ asset('backend/assets/css/pace.min.css') }}" rel="stylesheet" />
     <script src="{{ asset('backend/assets/js/pace.min.js') }}"></script>
     <script src="/backend/assets/js/sweet_alert.js" defer></script>
+    <script src="{{ asset('frontend') }}/assets/js/vendor/jquery-1.12.4.min.js"></script>
     <!-- Vendors JS -->
     {{-- <script src="{{ asset('frontend') }}/assets/js/vendor/modernizr-2.8.3.min.js"></script>
-    <script src="{{ asset('frontend') }}/assets/js/vendor/jquery-1.12.4.min.js"></script> --}}
+     --}}
     <!-- Plugins JS -->
     {{-- <script src="{{ asset('frontend') }}/assets/js/popper.min.js"></script>
     <script src="{{ asset('frontend') }}/assets/js/bootstrap.min.js"></script>

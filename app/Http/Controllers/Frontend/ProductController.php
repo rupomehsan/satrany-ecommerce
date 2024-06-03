@@ -8,12 +8,19 @@ use Inertia\Inertia;
 
 class ProductController extends Controller
 {
+    static $productModel = \App\Modules\ProductManagement\Product\Models\Model::class;
+
     public function index()
     {
         return Inertia::render('Product/Index');
     }
     public function productDetails($slug)
     {
-        return Inertia::render('Product/Details');
+        $producDetails = self::$productModel::where('slug', $slug)->first();
+        $relatedProduct = self::$productModel::whereHas('product_categories')->limit(10)->get();
+        return Inertia::render('Product/Details', [
+            'productDetailsData' => $producDetails,
+            'relatedProduct' => $relatedProduct
+        ]);
     }
 }

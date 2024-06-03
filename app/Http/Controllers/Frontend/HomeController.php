@@ -8,12 +8,12 @@ use Inertia\Inertia;
 
 class HomeController extends Controller
 {
-    static $CategoryModel = \App\Modules\ProductManagement\ProductCategory\Models\Model::class;
+    static $productModel = \App\Modules\ProductManagement\Product\Actions\All::class;
     public function index()
     {
-        $category = self::$CategoryModel::limit(5)->get();
+        $all_feature_products = self::$productModel::execute(request());
         return Inertia::render('Home/Index', [
-            'categories' => $category
+            'all_feature_products' => $all_feature_products
         ]);
     }
 }

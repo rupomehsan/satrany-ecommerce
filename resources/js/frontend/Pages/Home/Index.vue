@@ -315,61 +315,17 @@
                     <!-- banner-area start -->
                     <div class="banner-area mtb-35">
                         <div class="row g-4">
-                            <div class="col-md-4">
+                            <div
+                                class="col-md-4"
+                                v-for="category in $page.props.categories"
+                            >
                                 <div class="single-banner">
-                                    <Link href="products?category=slug">
+                                    <p>{{ category.title }}</p>
+                                    <Link
+                                        :href="`products?category=${category.slug}`"
+                                    >
                                         <img
                                             src="frontend/assets/images/banner/4.jpg"
-                                            alt=""
-                                        />
-                                    </Link>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="single-banner">
-                                    <Link href="products?category=slug">
-                                        <img
-                                            src="frontend/assets/images/banner/5.jpg"
-                                            alt=""
-                                        />
-                                    </Link>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="single-banner">
-                                    <Link href="products?category=slug">
-                                        <img
-                                            src="frontend/assets/images/banner/4.jpg"
-                                            alt=""
-                                        />
-                                    </Link>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="single-banner">
-                                    <Link href="products?category=slug">
-                                        <img
-                                            src="frontend/assets/images/banner/5.jpg"
-                                            alt=""
-                                        />
-                                    </Link>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="single-banner">
-                                    <Link href="products?category=slug">
-                                        <img
-                                            src="frontend/assets/images/banner/4.jpg"
-                                            alt=""
-                                        />
-                                    </Link>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="single-banner">
-                                    <Link href="products?category=slug">
-                                        <img
-                                            src="frontend/assets/images/banner/5.jpg"
                                             alt=""
                                         />
                                     </Link>
@@ -399,102 +355,11 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-3 my-1">
-                                <div class="product-wrapper bl">
-                                    <div class="product-img">
-                                        <Link :href="`product-details/asdf`">
-                                            <img
-                                                src="frontend/img/product/1.jpg"
-                                                alt=""
-                                                class="primary"
-                                            />
-                                            <img
-                                                src="frontend/img/product/2.jpg"
-                                                alt=""
-                                                class="secondary"
-                                            />
-                                        </Link>
-                                        <div
-                                            class="product-icon c-fff home3-hover-bg"
-                                        >
-                                            <ul>
-                                                <li>
-                                                    <Link
-                                                        href="#"
-                                                        @click="addToCart(1)"
-                                                        role="button"
-                                                        data-bs-toggle="tooltip"
-                                                        aria-label="Add to cart"
-                                                        data-bs-original-title="Add to cart"
-                                                        ><i
-                                                            title="Add to cart"
-                                                            class="fa fa-shopping-cart"
-                                                        ></i
-                                                    ></Link>
-                                                </li>
-                                                <li>
-                                                    <Link
-                                                        @click="
-                                                            addToWishList(1)
-                                                        "
-                                                        role="button"
-                                                        href="#"
-                                                        data-bs-toggle="tooltip"
-                                                        aria-label="Wishlist"
-                                                        data-bs-original-title="Wishlist"
-                                                        ><i
-                                                            title="Add to wishlist"
-                                                            class="fa fa-heart-o"
-                                                        ></i
-                                                    ></Link>
-                                                </li>
-                                                <li>
-                                                    <Link
-                                                        @click="
-                                                            addToCompareList(1)
-                                                        "
-                                                        data-bs-toggle="tooltip"
-                                                        href="#"
-                                                        role="button"
-                                                        aria-label="Compare"
-                                                        data-bs-original-title="Compare"
-                                                        ><i
-                                                            title="Add to comparelist"
-                                                            class="fa fa-comments"
-                                                        ></i
-                                                    ></Link>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-content home3-hover">
-                                        <h3>
-                                            <Link
-                                                :href="`product-details/asdf`"
-                                            >
-                                                {{ "Rupom ehsan" }}
-                                            </Link>
-                                        </h3>
-                                        <ul>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                        <span>{{ 1000 }} ৳</span>
-                                    </div>
-                                </div>
+                            <div
+                                class="col-md-3 my-1"
+                                v-for="product in all_products.data"
+                            >
+                                <product-grid :product="product"></product-grid>
                             </div>
                         </div>
 
@@ -607,249 +472,6 @@
                                     <span>&300.00</span>
                                 </div>
                             </div>
-                            <div class="product-wrapper">
-                                <div class="product-img">
-                                    <Link href="product-details/slug">
-                                        <img
-                                            src="frontend/img/product/1.jpg"
-                                            alt=""
-                                            class="primary"
-                                        />
-                                        <img
-                                            src="frontend/img/product/2.jpg"
-                                            alt=""
-                                            class="secondary"
-                                        />
-                                    </Link>
-                                    <div class="product-icon home3-hover-bg">
-                                        <ul>
-                                            <li>
-                                                <Link
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    title="Add to cart"
-                                                    ><i
-                                                        class="fa fa-shopping-cart"
-                                                    ></i
-                                                ></Link>
-                                            </li>
-                                            <li>
-                                                <Link
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    title="Wishlist"
-                                                    ><i
-                                                        class="fa fa-heart-o"
-                                                    ></i
-                                                ></Link>
-                                            </li>
-                                            <li>
-                                                <Link
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    title="Compare"
-                                                    ><i
-                                                        class="fa fa-comments"
-                                                    ></i
-                                                ></Link>
-                                            </li>
-                                            <li>
-                                                <Link
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    title="Accumsan eli"
-                                                    ><i class="fa fa-search"></i
-                                                ></Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <span class="sale">Sale</span>
-                                    <div class="deal-count">
-                                        <div class="timer">
-                                            <div
-                                                data-countdown="2023/12/01"
-                                            ></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-content home3-hover">
-                                    <h3>
-                                        <Link href="product-details/slug">
-                                            cursus eu</Link
-                                        >
-                                    </h3>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                    <span>&300.00</span>
-                                </div>
-                            </div>
-                            <div class="product-wrapper">
-                                <div class="product-img">
-                                    <Link href="product-details/slug">
-                                        <img
-                                            src="frontend/img/product/3.jpg"
-                                            alt=""
-                                            class="primary"
-                                        />
-                                        <img
-                                            src="frontend/img/product/4.jpg"
-                                            alt=""
-                                            class="secondary"
-                                        />
-                                    </Link>
-                                    <div class="product-icon home3-hover-bg">
-                                        <ul>
-                                            <li>
-                                                <Link
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    title="Add to cart"
-                                                    ><i
-                                                        class="fa fa-shopping-cart"
-                                                    ></i
-                                                ></Link>
-                                            </li>
-                                            <li>
-                                                <Link
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    title="Wishlist"
-                                                    ><i
-                                                        class="fa fa-heart-o"
-                                                    ></i
-                                                ></Link>
-                                            </li>
-                                            <li>
-                                                <Link
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    title="Compare"
-                                                    ><i
-                                                        class="fa fa-comments"
-                                                    ></i
-                                                ></Link>
-                                            </li>
-                                            <li>
-                                                <Link
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    title="Accumsan eli"
-                                                    ><i class="fa fa-search"></i
-                                                ></Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <span class="sale">Sale</span>
-                                    <div class="deal-count">
-                                        <div class="timer">
-                                            <div
-                                                data-countdown="2023/12/01"
-                                            ></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-content home3-hover">
-                                    <h3>
-                                        <Link href="product-details/slug">
-                                            cursus eu</Link
-                                        >
-                                    </h3>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                    <span>&300.00</span>
-                                </div>
-                            </div>
-                            <div class="product-wrapper">
-                                <div class="product-img">
-                                    <Link href="product-details/slug">
-                                        <img
-                                            src="frontend/img/product/5.jpg"
-                                            alt=""
-                                            class="primary"
-                                        />
-                                        <img
-                                            src="frontend/img/product/6.jpg"
-                                            alt=""
-                                            class="secondary"
-                                        />
-                                    </Link>
-                                    <div class="product-icon home3-hover-bg">
-                                        <ul>
-                                            <li>
-                                                <Link
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    title="Add to cart"
-                                                    ><i
-                                                        class="fa fa-shopping-cart"
-                                                    ></i
-                                                ></Link>
-                                            </li>
-                                            <li>
-                                                <Link
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    title="Wishlist"
-                                                    ><i
-                                                        class="fa fa-heart-o"
-                                                    ></i
-                                                ></Link>
-                                            </li>
-                                            <li>
-                                                <Link
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    title="Compare"
-                                                    ><i
-                                                        class="fa fa-comments"
-                                                    ></i
-                                                ></Link>
-                                            </li>
-                                            <li>
-                                                <Link
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    title="Accumsan eli"
-                                                    ><i class="fa fa-search"></i
-                                                ></Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <span class="sale">Sale</span>
-                                    <div class="deal-count">
-                                        <div class="timer">
-                                            <div
-                                                data-countdown="2023/12/01"
-                                            ></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-content home3-hover">
-                                    <h3>
-                                        <Link href="product-details/slug">
-                                            cursus eu</Link
-                                        >
-                                    </h3>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                    <span>&300.00</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <!-- featured-area start -->
@@ -859,267 +481,13 @@
                             <h3>Latest products</h3>
                         </div>
                         <div class="feautred-active home2 left-right-angle">
-                            <div class="featured-wrapper">
-                                <div
-                                    class="product-wrapper single-featured mtb-15"
-                                >
-                                    <div class="product-img floatleft">
-                                        <Link href="product-details/slug">
-                                            <img
-                                                src="frontend/img/product/1.jpg"
-                                                alt=""
-                                                class="primary"
-                                            />
-                                            <img
-                                                src="frontend/img/product/2.jpg"
-                                                alt=""
-                                                class="secondary"
-                                            />
-                                        </Link>
-                                    </div>
-                                    <div class="product-content floatleft">
-                                        <h3>
-                                            <Link href="product-details/slug"
-                                                >Cras nec nisl ut erat</Link
-                                            >
-                                        </h3>
-                                        <ul>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                        <span>&300.00</span>
-                                    </div>
-                                </div>
-                                <div
-                                    class="product-wrapper single-featured mtb-15"
-                                >
-                                    <div class="product-img floatleft">
-                                        <Link href="product-details/slug">
-                                            <img
-                                                src="frontend/img/product/1.jpg"
-                                                alt=""
-                                                class="primary"
-                                            />
-                                            <img
-                                                src="frontend/img/product/2.jpg"
-                                                alt=""
-                                                class="secondary"
-                                            />
-                                        </Link>
-                                    </div>
-                                    <div class="product-content floatleft">
-                                        <h3>
-                                            <Link href="product-details/slug"
-                                                >Cras nec nisl ut erat</Link
-                                            >
-                                        </h3>
-                                        <ul>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                        <span>&300.00</span>
-                                    </div>
-                                </div>
-                                <div
-                                    class="product-wrapper single-featured mtb-15"
-                                >
-                                    <div class="product-img floatleft">
-                                        <Link href="product-details/slug">
-                                            <img
-                                                src="frontend/img/product/1.jpg"
-                                                alt=""
-                                                class="primary"
-                                            />
-                                            <img
-                                                src="frontend/img/product/2.jpg"
-                                                alt=""
-                                                class="secondary"
-                                            />
-                                        </Link>
-                                    </div>
-                                    <div class="product-content floatright">
-                                        <h3>
-                                            <Link href="product-details/slug">
-                                                cursus eu</Link
-                                            >
-                                        </h3>
-                                        <ul>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                        <span>&300.00</span>
-                                    </div>
-                                </div>
-                                <div
-                                    class="product-wrapper single-featured mtb-15"
-                                >
-                                    <div class="product-img floatleft">
-                                        <Link href="product-details/slug">
-                                            <img
-                                                src="frontend/img/product/1.jpg"
-                                                alt=""
-                                                class="primary"
-                                            />
-                                            <img
-                                                src="frontend/img/product/2.jpg"
-                                                alt=""
-                                                class="secondary"
-                                            />
-                                        </Link>
-                                    </div>
-                                    <div class="product-content floatright">
-                                        <h3>
-                                            <Link href="product-details/slug"
-                                                >Cras nec nisl ut erat</Link
-                                            >
-                                        </h3>
-                                        <ul>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                        <span>&300.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="featured-wrapper">
-                                <div
-                                    class="product-wrapper single-featured mtb-15"
-                                >
-                                    <div class="product-img floatleft">
-                                        <Link href="product-details/slug">
-                                            <img
-                                                src="frontend/img/product/1.jpg"
-                                                alt=""
-                                                class="primary"
-                                            />
-                                            <img
-                                                src="frontend/img/product/2.jpg"
-                                                alt=""
-                                                class="secondary"
-                                            />
-                                        </Link>
-                                    </div>
-                                    <div class="product-content floatright">
-                                        <h3>
-                                            <Link href="product-details/slug"
-                                                >Ligula euismod eget</Link
-                                            >
-                                        </h3>
-                                        <ul>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                        <span>&300.00</span>
-                                    </div>
-                                </div>
-                                <div
-                                    class="product-wrapper single-featured mtb-15"
-                                >
-                                    <div class="product-img floatleft">
-                                        <Link href="product-details/slug">
-                                            <img
-                                                src="frontend/img/product/3.jpg"
-                                                alt=""
-                                                class="primary"
-                                            />
-                                            <img
-                                                src="frontend/img/product/4.jpg"
-                                                alt=""
-                                                class="secondary"
-                                            />
-                                        </Link>
-                                    </div>
-                                    <div class="product-content floatright">
-                                        <h3>
-                                            <Link href="product-details/slug"
-                                                >Ligula euismod eget</Link
-                                            >
-                                        </h3>
-                                        <ul>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                        <span>&300.00</span>
-                                    </div>
-                                </div>
+                            <div
+                                class="featured-wrapper"
+                                v-for="product in all_products.data"
+                            >
+                                <product-grid-flex
+                                    :product="product"
+                                ></product-grid-flex>
                             </div>
                         </div>
                     </div>
@@ -1156,7 +524,9 @@
                     <i class="fa fa-star-o icon home3-bg2"></i>
                     <h3>Our TESTIMONIALS</h3>
                 </div>
-                <div class="testmonial-active home2 right left-right-angle">
+                <div
+                    class="testmonial-active home2 right left-right-angle mx-5"
+                >
                     <div class="single-testimonil clear">
                         <div class="testimonil-content p mtb-25">
                             <p>
@@ -1296,17 +666,86 @@
 </template>
 <script>
 import HeroSlider from "../../Components/HeroSlider.vue";
+import { mapActions, mapState } from "pinia";
+import { common_page_store } from "../../Shared/Store/index";
+
 export default {
     components: { HeroSlider },
     props: {
-        categories: Array,
+        all_feature_products: Object,
     },
     data: () => ({
-        // category: [],
+        all_products: [],
     }),
-    created: function () {
-        console.log(this.categories);
+    created() {
+        this.all_products = this.all_feature_products.original.data;
+    },
+    methods: {
+        ...mapActions(common_page_store, {
+            get_all_cart_data: "get_all_cart_data",
+        }),
+
+        addToCart: async function (productId) {
+            const response = await axios.post("add-to-cart", {
+                productId: productId,
+            });
+
+            if (response.data.status === "success") {
+                window.s_alert(response.data.message);
+                await this.get_all_cart_data();
+            }
+        },
+        addToWishList: async function (productId) {
+            const response = await axios.post("add-to-wish-list", {
+                productId: productId,
+            });
+
+            if (response.data.status === "success") {
+                window.s_alert(response.data.message);
+                this.get_all_cart_data();
+            }
+            if (response.data.status === "warning") {
+                window.w_alert(response.data.message);
+            }
+        },
+        addToCompareList: async function (productId) {
+            const response = await axios.post("add-to-compare-list", {
+                productId: productId,
+            });
+
+            if (response.data.status === "success") {
+                window.s_alert(response.data.message);
+            }
+            if (response.data.status === "warning") {
+                window.w_alert(response.data.message);
+            }
+        },
     },
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.single-banner {
+    position: relative;
+}
+
+.single-banner:hover p {
+    display: block;
+    opacity: 1;
+}
+
+.single-banner p {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: 900;
+    border: 1px solid rgba(128, 128, 128, 0.68);
+    padding: 5px 10px;
+    background: rgba(38, 38, 38, 0.34);
+    opacity: 0;
+    transition: opacity 0.9s ease;
+}
+</style>

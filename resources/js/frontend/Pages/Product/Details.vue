@@ -1,21 +1,7 @@
 <template>
     <div class="simple-product-area">
         <div class="container">
-            <div class="woocommerce-breadcrumb mtb-15">
-                <div class="menu">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="shop.html">Shop</a></li>
-                        <li><a href="#">Women's</a></li>
-                        <li><a href="#">Hats</a></li>
-                        <li class="active">
-                            <a href="#">Cras nec nisl ut erat</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="row">
+            <div class="row mt-2">
                 <div class="col-lg-12">
                     <div class="row justify-content-center">
                         <div class="col-lg-5 col-md-8">
@@ -79,28 +65,49 @@
                                 <div
                                     class="single-product-menu mb-30 box-shadow"
                                 >
-                                    <div class="nav single-product-active clear gap-1 p-1">
+                                    <div
+                                        class="nav single-product-active clear gap-1 p-1"
+                                    >
                                         <div class="single-img floatleft">
                                             <a href="#one" data-bs-toggle="tab">
-                                                <img src="/frontend/img/product/1.jpg" alt="" height="60" width="125" />
+                                                <img
+                                                    src="/frontend/img/product/1.jpg"
+                                                    alt=""
+                                                    height="60"
+                                                    width="125"
+                                                />
                                             </a>
                                         </div>
                                         <div class="single-img floatleft">
                                             <a href="#one" data-bs-toggle="tab">
-                                                <img src="/frontend/img/product/1.jpg" alt="" height="60" width="125" />
+                                                <img
+                                                    src="/frontend/img/product/1.jpg"
+                                                    alt=""
+                                                    height="60"
+                                                    width="125"
+                                                />
                                             </a>
                                         </div>
                                         <div class="single-img floatleft">
                                             <a href="#one" data-bs-toggle="tab">
-                                                <img src="/frontend/img/product/1.jpg" alt="" height="60" width="125" />
+                                                <img
+                                                    src="/frontend/img/product/1.jpg"
+                                                    alt=""
+                                                    height="60"
+                                                    width="125"
+                                                />
                                             </a>
                                         </div>
                                         <div class="single-img floatleft">
                                             <a href="#one" data-bs-toggle="tab">
-                                                <img src="/frontend/img/product/1.jpg" alt="" height="60" width="125" />
+                                                <img
+                                                    src="/frontend/img/product/1.jpg"
+                                                    alt=""
+                                                    height="60"
+                                                    width="125"
+                                                />
                                             </a>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -109,7 +116,7 @@
                             <div
                                 class="symple-product box-shadow bg-fff p-15 mb-30"
                             >
-                                <h3>Cras nec nisl ut erat</h3>
+                                <h3>{{ productDetails.title }}</h3>
                                 <div
                                     class="product-content simple-product-content mb-10"
                                 >
@@ -122,14 +129,16 @@
                                     </ul>
                                     <a href="#">(3 customer reviews)</a><br />
                                     <span
-                                        ><del>500$</del
-                                        ><span>&300.00</span></span
+                                        ><del>{{
+                                            productDetails.maximum_sale_price
+                                        }}</del
+                                        ><span>{{
+                                            productDetails.customer_sales_price
+                                        }}</span></span
                                     >
                                 </div>
                                 <p>
-                                    it over 2000 years old. Richard McClintock,
-                                    a Latin professor at Hampden-Sydney College
-                                    in Virginia, looked up one of the more
+                                    {{ productDetails.short_description }}
                                 </p>
                                 <div
                                     class="simple-product-form contuct-form mtb-20"
@@ -139,10 +148,16 @@
                                             min="1"
                                             max="1000"
                                             name="quantity"
-                                            value="48"
+                                            value="1"
                                             type="number"
                                         />
-                                        <button>Add to cart</button>
+                                        <button
+                                            @click.prevent="
+                                                addToCart(productDetails.id)
+                                            "
+                                        >
+                                            Add to cart
+                                        </button>
                                     </form>
                                 </div>
                                 <div
@@ -157,7 +172,7 @@
                                                 ><i class="fa fa-heart-o"></i
                                             ></a>
                                         </li>
-                                        <li>
+                                        <li class="mx-2">
                                             <a
                                                 href="#"
                                                 data-bs-toggle="tooltip"
@@ -271,10 +286,7 @@
                                 <div class="product-description p-20 bt">
                                     <h2>Product Description</h2>
                                     <p>
-                                        it over 2000 years old. Richard
-                                        McClintock, a Latin professor at
-                                        Hampden-Sydney College in Virginia,
-                                        looked up one of the more
+                                        {{ productDetails.description }}
                                     </p>
                                 </div>
                             </div>
@@ -516,8 +528,7 @@
                         </div>
                     </div>
 
-
-                    <div class="product box-shadow mb-50 bg-fff">
+                    <div class="product box-shadow mb-50 bg-fff mt-2">
                         <div
                             class="product-title home2-product-title home2-bg-1 text-uppercase"
                         >
@@ -525,477 +536,13 @@
                             <h3>Related Products</h3>
                         </div>
                         <div class="row">
-                            <div class="col-md-3 my-1">
-                                <div class="product-wrapper bl">
-                                    <div class="product-img">
-                                        <Link :href="`/product-details/asdf`">
-                                            <img
-                                                src="/frontend/img/product/1.jpg"
-                                                alt=""
-                                                class="primary"
-                                            />
-                                            <img
-                                                src="/frontend/img/product/2.jpg"
-                                                alt=""
-                                                class="secondary"
-                                            />
-                                        </Link>
-                                        <div
-                                            class="product-icon c-fff home3-hover-bg"
-                                        >
-                                            <ul>
-                                                <li>
-                                                    <Link
-                                                        @click="addToCart(1)"
-                                                        role="button"
-                                                        data-bs-toggle="tooltip"
-                                                        aria-label="Add to cart"
-                                                        data-bs-original-title="Add to cart"
-                                                        ><i
-                                                            title="Add to cart"
-                                                            class="fa fa-shopping-cart"
-                                                        ></i
-                                                    ></Link>
-                                                </li>
-                                                <li>
-                                                    <Link
-                                                        @click="
-                                                            addToWishList(1)
-                                                        "
-                                                        role="button"
-                                                        data-bs-toggle="tooltip"
-                                                        aria-label="Wishlist"
-                                                        data-bs-original-title="Wishlist"
-                                                        ><i
-                                                            title="Add to wishlist"
-                                                            class="fa fa-heart-o"
-                                                        ></i
-                                                    ></Link>
-                                                </li>
-                                                <li>
-                                                    <Link
-                                                        @click="
-                                                            addToCompareList(1)
-                                                        "
-                                                        data-bs-toggle="tooltip"
-                                                        role="button"
-                                                        aria-label="Compare"
-                                                        data-bs-original-title="Compare"
-                                                        ><i
-                                                            title="Add to comparelist"
-                                                            class="fa fa-comments"
-                                                        ></i
-                                                    ></Link>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-content home3-hover">
-                                        <h3>
-                                            <Link
-                                                :href="`product-details/asdf`"
-                                            >
-                                                {{ "Rupom ehsan" }}
-                                            </Link>
-                                        </h3>
-                                        <ul>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                        <span>{{ 1000 }} ৳</span>
-                                    </div>
-                                </div>
+                            <div
+                                class="col-md-3 my-1"
+                                v-for="product in $page.props.relatedProduct"
+                                :key="product.id"
+                            >
+                                <product-grid :product="product"></product-grid>
                             </div>
-                            <div class="col-md-3 my-1">
-                                <div class="product-wrapper bl">
-                                    <div class="product-img">
-                                        <Link :href="`product-details/asdf`">
-                                            <img
-                                                src="/frontend/img/product/1.jpg"
-                                                alt=""
-                                                class="primary"
-                                            />
-                                            <img
-                                                src="/frontend/img/product/2.jpg"
-                                                alt=""
-                                                class="secondary"
-                                            />
-                                        </Link>
-                                        <div
-                                            class="product-icon c-fff home3-hover-bg"
-                                        >
-                                            <ul>
-                                                <li>
-                                                    <Link
-                                                        @click="addToCart(1)"
-                                                        role="button"
-                                                        data-bs-toggle="tooltip"
-                                                        aria-label="Add to cart"
-                                                        data-bs-original-title="Add to cart"
-                                                        ><i
-                                                            title="Add to cart"
-                                                            class="fa fa-shopping-cart"
-                                                        ></i
-                                                    ></Link>
-                                                </li>
-                                                <li>
-                                                    <Link
-                                                        @click="
-                                                            addToWishList(1)
-                                                        "
-                                                        role="button"
-                                                        data-bs-toggle="tooltip"
-                                                        aria-label="Wishlist"
-                                                        data-bs-original-title="Wishlist"
-                                                        ><i
-                                                            title="Add to wishlist"
-                                                            class="fa fa-heart-o"
-                                                        ></i
-                                                    ></Link>
-                                                </li>
-                                                <li>
-                                                    <Link
-                                                        @click="
-                                                            addToCompareList(1)
-                                                        "
-                                                        data-bs-toggle="tooltip"
-                                                        role="button"
-                                                        aria-label="Compare"
-                                                        data-bs-original-title="Compare"
-                                                        ><i
-                                                            title="Add to comparelist"
-                                                            class="fa fa-comments"
-                                                        ></i
-                                                    ></Link>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-content home3-hover">
-                                        <h3>
-                                            <Link
-                                                :href="`product-details/asdf`"
-                                            >
-                                                {{ "Rupom ehsan" }}
-                                            </Link>
-                                        </h3>
-                                        <ul>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                        <span>{{ 1000 }} ৳</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 my-1">
-                                <div class="product-wrapper bl">
-                                    <div class="product-img">
-                                        <Link :href="`product-details/asdf`">
-                                            <img
-                                                src="/frontend/img/product/1.jpg"
-                                                alt=""
-                                                class="primary"
-                                            />
-                                            <img
-                                                src="/frontend/img/product/2.jpg"
-                                                alt=""
-                                                class="secondary"
-                                            />
-                                        </Link>
-                                        <div
-                                            class="product-icon c-fff home3-hover-bg"
-                                        >
-                                            <ul>
-                                                <li>
-                                                    <Link
-                                                        @click="addToCart(1)"
-                                                        role="button"
-                                                        data-bs-toggle="tooltip"
-                                                        aria-label="Add to cart"
-                                                        data-bs-original-title="Add to cart"
-                                                        ><i
-                                                            title="Add to cart"
-                                                            class="fa fa-shopping-cart"
-                                                        ></i
-                                                    ></Link>
-                                                </li>
-                                                <li>
-                                                    <Link
-                                                        @click="
-                                                            addToWishList(1)
-                                                        "
-                                                        role="button"
-                                                        data-bs-toggle="tooltip"
-                                                        aria-label="Wishlist"
-                                                        data-bs-original-title="Wishlist"
-                                                        ><i
-                                                            title="Add to wishlist"
-                                                            class="fa fa-heart-o"
-                                                        ></i
-                                                    ></Link>
-                                                </li>
-                                                <li>
-                                                    <Link
-                                                        @click="
-                                                            addToCompareList(1)
-                                                        "
-                                                        data-bs-toggle="tooltip"
-                                                        role="button"
-                                                        aria-label="Compare"
-                                                        data-bs-original-title="Compare"
-                                                        ><i
-                                                            title="Add to comparelist"
-                                                            class="fa fa-comments"
-                                                        ></i
-                                                    ></Link>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-content home3-hover">
-                                        <h3>
-                                            <Link
-                                                :href="`product-details/asdf`"
-                                            >
-                                                {{ "Rupom ehsan" }}
-                                            </Link>
-                                        </h3>
-                                        <ul>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                        <span>{{ 1000 }} ৳</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 my-1">
-                                <div class="product-wrapper bl">
-                                    <div class="product-img">
-                                        <Link :href="`product-details/asdf`">
-                                            <img
-                                                src="/frontend/img/product/1.jpg"
-                                                alt=""
-                                                class="primary"
-                                            />
-                                            <img
-                                                src="/frontend/img/product/2.jpg"
-                                                alt=""
-                                                class="secondary"
-                                            />
-                                        </Link>
-                                        <div
-                                            class="product-icon c-fff home3-hover-bg"
-                                        >
-                                            <ul>
-                                                <li>
-                                                    <Link
-                                                        @click="addToCart(1)"
-                                                        role="button"
-                                                        data-bs-toggle="tooltip"
-                                                        aria-label="Add to cart"
-                                                        data-bs-original-title="Add to cart"
-                                                        ><i
-                                                            title="Add to cart"
-                                                            class="fa fa-shopping-cart"
-                                                        ></i
-                                                    ></Link>
-                                                </li>
-                                                <li>
-                                                    <Link
-                                                        @click="
-                                                            addToWishList(1)
-                                                        "
-                                                        role="button"
-                                                        data-bs-toggle="tooltip"
-                                                        aria-label="Wishlist"
-                                                        data-bs-original-title="Wishlist"
-                                                        ><i
-                                                            title="Add to wishlist"
-                                                            class="fa fa-heart-o"
-                                                        ></i
-                                                    ></Link>
-                                                </li>
-                                                <li>
-                                                    <Link
-                                                        @click="
-                                                            addToCompareList(1)
-                                                        "
-                                                        data-bs-toggle="tooltip"
-                                                        role="button"
-                                                        aria-label="Compare"
-                                                        data-bs-original-title="Compare"
-                                                        ><i
-                                                            title="Add to comparelist"
-                                                            class="fa fa-comments"
-                                                        ></i
-                                                    ></Link>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-content home3-hover">
-                                        <h3>
-                                            <Link
-                                                :href="`product-details/asdf`"
-                                            >
-                                                {{ "Rupom ehsan" }}
-                                            </Link>
-                                        </h3>
-                                        <ul>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                        <span>{{ 1000 }} ৳</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 my-1">
-                                <div class="product-wrapper bl">
-                                    <div class="product-img">
-                                        <Link :href="`product-details/asdf`">
-                                            <img
-                                                src="/frontend/img/product/1.jpg"
-                                                alt=""
-                                                class="primary"
-                                            />
-                                            <img
-                                                src="/frontend/img/product/2.jpg"
-                                                alt=""
-                                                class="secondary"
-                                            />
-                                        </Link>
-                                        <div
-                                            class="product-icon c-fff home3-hover-bg"
-                                        >
-                                            <ul>
-                                                <li>
-                                                    <Link
-                                                        @click="addToCart(1)"
-                                                        role="button"
-                                                        data-bs-toggle="tooltip"
-                                                        aria-label="Add to cart"
-                                                        data-bs-original-title="Add to cart"
-                                                        ><i
-                                                            title="Add to cart"
-                                                            class="fa fa-shopping-cart"
-                                                        ></i
-                                                    ></Link>
-                                                </li>
-                                                <li>
-                                                    <Link
-                                                        @click="
-                                                            addToWishList(1)
-                                                        "
-                                                        role="button"
-                                                        data-bs-toggle="tooltip"
-                                                        aria-label="Wishlist"
-                                                        data-bs-original-title="Wishlist"
-                                                        ><i
-                                                            title="Add to wishlist"
-                                                            class="fa fa-heart-o"
-                                                        ></i
-                                                    ></Link>
-                                                </li>
-                                                <li>
-                                                    <Link
-                                                        @click="
-                                                            addToCompareList(1)
-                                                        "
-                                                        data-bs-toggle="tooltip"
-                                                        role="button"
-                                                        aria-label="Compare"
-                                                        data-bs-original-title="Compare"
-                                                        ><i
-                                                            title="Add to comparelist"
-                                                            class="fa fa-comments"
-                                                        ></i
-                                                    ></Link>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-content home3-hover">
-                                        <h3>
-                                            <Link
-                                                :href="`product-details/asdf`"
-                                            >
-                                                {{ "Rupom ehsan" }}
-                                            </Link>
-                                        </h3>
-                                        <ul>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                        <span>{{ 1000 }} ৳</span>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                 </div>
@@ -1004,6 +551,36 @@
     </div>
 </template>
 <script>
-export default {};
+import { mapActions, mapState } from "pinia";
+import { common_page_store } from "../../Shared/Store/index";
+export default {
+    props: {
+        productDetailsData: {
+            type: Object,
+            required: true,
+        },
+    },
+    data() {
+        return {
+            productDetails: this.productDetailsData,
+        };
+    },
+
+    methods: {
+        ...mapActions(common_page_store, {
+            get_all_cart_data: "get_all_cart_data",
+        }),
+        addToCart: async function (productId) {
+            const response = await axios.post("add-to-cart", {
+                productId: productId,
+            });
+
+            if (response.data.status === "success") {
+                window.s_alert(response.data.message);
+                await this.get_all_cart_data();
+            }
+        },
+    },
+};
 </script>
-<style lang="scss" scoped></style>
+<style></style>

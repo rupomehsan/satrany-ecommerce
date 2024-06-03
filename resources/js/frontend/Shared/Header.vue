@@ -59,7 +59,7 @@
                                     height="100"
                                     width="100"
                                 />
-                                <span class="logo-title">Satrany</span>
+                                <span class="logo-title">Satrany </span>
                             </Link>
                         </div>
                     </div>
@@ -91,9 +91,10 @@
                                     </li>
                                     <li>
                                         <Link
-                                        :class="{
+                                            :class="{
                                                 'active-link':
-                                                    $page.url === '/terms-and-conditions',
+                                                    $page.url ===
+                                                    '/terms-and-conditions',
                                             }"
                                             href="terms-and-conditions"
                                             >Terms & Conditions</Link
@@ -101,9 +102,10 @@
                                     </li>
                                     <li>
                                         <Link
-                                        :class="{
+                                            :class="{
                                                 'active-link':
-                                                    $page.url === '/return-and-refund',
+                                                    $page.url ===
+                                                    '/return-and-refund',
                                             }"
                                             href="return-and-refund"
                                             >Return & Refund</Link
@@ -111,7 +113,7 @@
                                     </li>
                                     <li>
                                         <Link
-                                        :class="{
+                                            :class="{
                                                 'active-link':
                                                     $page.url === '/contact-us',
                                             }"
@@ -259,12 +261,15 @@
                                 :class="is_home ? 'd-block' : 'd-none'"
                             >
                                 <ul>
-                                    <li>
+                                    <li
+                                        v-for="category in $page.props
+                                            .categories"
+                                    >
                                         <a
-                                            :href="`products?category=${'asdf'}`"
+                                            :href="`products?category=${category.slug}`"
                                         >
                                             <i class="fa fa-star"></i>
-                                            {{ "category.title" }}
+                                            {{ category.title }}
                                         </a>
                                     </li>
                                     <li>
@@ -294,53 +299,59 @@
                             <div class="cart">
                                 <i class="icofont icofont-bag"></i>
                                 <a href="#" class="mx-2">
-                                    {{ "all_cart_data.length" }} Items -
+                                    {{ all_cart_data.length }} Items -
                                     <strong class="mx-2"
-                                        >{{ "total_cart_price" }} ৳</strong
+                                        >{{ total_cart_price }} ৳</strong
                                     >
                                     <i class="icofont icofont-rounded-down"></i>
                                 </a>
                             </div>
-                            <ul>
+                            <ul class="px-3">
                                 <li>
                                     <div class="cart-items">
-                                        <div class="cart-item bb mt-10">
+                                        <div
+                                            class="cart-item bb mt-10"
+                                            v-for="cart in all_cart_data"
+                                        >
                                             <div class="cart-img">
                                                 <a href="#">
                                                     <img
-                                                        src="frontend/assets/images/cart/1.jpg"
+                                                        src="frontend/img/product/1.jpg"
                                                         alt=""
                                                     />
                                                 </a>
                                             </div>
                                             <div class="cart-content">
                                                 <a
-                                                    :href="`product-details/${'cart.product?.slug'}`"
+                                                    :href="`product-details/${cart.product?.slug}`"
                                                     >{{
-                                                        "  cart.product?.title"
+                                                        cart.product?.title
                                                     }}</a
                                                 >
                                                 <a
-                                                    @click="removeFromCart(1)"
+                                                    @click="removeFromCart(cart.id)"
                                                     class="pull-right cart-remove"
                                                     role="button"
                                                 >
                                                     <i class="fa fa-times"></i>
                                                 </a>
                                                 <span
-                                                    >{{ "cart.quantity" }} x
+                                                    >{{ cart.quantity }} x
                                                     {{
-                                                        " cart.product?.customer_sales_price"
+                                                        cart.product
+                                                            ?.customer_sales_price
                                                     }}
                                                     =
                                                     {{
-                                                        "cart.quantity *cart.product?.customer_sales_price"
+                                                        cart.quantity *
+                                                        cart.product
+                                                            ?.customer_sales_price
                                                     }}
                                                     ৳</span
                                                 >
                                             </div>
                                         </div>
-                                        <div class="cart-btn mb-20">
+                                        <div class="cart-btn my-3 mx-auto">
                                             <a href="cart">view cart</a>
                                             <a href="checkout">Checkout</a>
                                         </div>
@@ -357,30 +368,57 @@
 </template>
 
 <script>
+import { mapActions, mapState } from "pinia";
+import { common_page_store } from "./Store/index";
 export default {
     data: () => ({
         is_home: true,
-        total_cart_price: 0,
         search: "",
     }),
-    created() {
+    created: async function () {
         try {
             let location = window.location.pathname;
             if (location !== "/") {
                 this.is_home = false;
             }
         } catch (error) {
-            console.error("Error in Header created hook:", error);
+            console.error("Error  created hook:", error);
         }
+
+        await this.get_all_cart_data();
+        await this.get_all_categories();
+
+
     },
     methods: {
-        searchHandler() {
-            // Your search logic here
+        ...mapActions(common_page_store, {
+            get_all_cart_data: "get_all_cart_data",
+            get_all_categories: "get_all_categories",
+            remove_cart_item: "remove_cart_item",
+        }),
+        removeFromCart: async function (cartId) {
+            let response = await this.remove_cart_item(cartId);
+            if (response.data.status == "success") {
+                window.s_alert(response.data.message);
+                await this.get_all_cart_data();
+            }
         },
-        removeFromCart(id) {
-            // Your remove from cart logic here
+        searchHandler: function () {
+            window.location.href = `products?search=${this.search}`;
         },
     },
+    computed: {
+        ...mapState(common_page_store, {
+            all_cart_data: "all_cart_data",
+            total_cart_price: "total_cart_price",
+        }),
+    },
+
+    // computed: {
+    //     all_cart_data() {
+    //         return this.$page.props.cartItems?.original?.data;
+    //     },
+    // },
 };
 </script>
 

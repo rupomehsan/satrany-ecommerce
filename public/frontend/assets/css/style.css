@@ -126,8 +126,8 @@ a:focus {
 ol,
 ul {
     list-style: outside none none;
-    margin: 0;
-    padding: 0;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 input,
@@ -691,7 +691,7 @@ a#scrollUp,
 }
 
 .cart-content {
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     margin-left: 64px;
 }
 
