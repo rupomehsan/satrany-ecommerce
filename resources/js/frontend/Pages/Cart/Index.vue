@@ -21,13 +21,13 @@
                 <div class="row justify-content-end">
                     <div class="col-md-8">
                         <div class="cart-table mb-50 bg-fff">
-                            <form action="#">
+                            <form @submit.prevent="submitHandler">
                                 <div class="table-content table-responsive">
                                     <table class="table text-center">
                                         <thead>
                                             <tr>
                                                 <th class="product-remove">
-                                                    Action adad{{ name }}
+                                                    Action
                                                 </th>
                                                 <th class="product-thumbnail">
                                                     Image
@@ -47,128 +47,73 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="cart-item">
+                                            <tr
+                                                class="cart-item"
+                                                v-for="cart in all_cart_data"
+                                                :key="cart.id"
+                                            >
                                                 <td class="product-remove">
                                                     <a
-                                                        href="#"
+                                                        @click="
+                                                            removeFromCart(
+                                                                cart.id
+                                                            )
+                                                        "
+                                                        role="button"
                                                         class="remove"
                                                         title="Remove this item"
                                                         >X</a
                                                     >
                                                 </td>
                                                 <td class="product-thumbnail">
-                                                    <a href="#">
+                                                    <Link
+                                                        :href="`product-details/${cart.product?.slug}`"
+                                                    >
                                                         <img
                                                             src="frontend/assets/images/cart/1.jpg"
                                                             alt=""
                                                         />
-                                                    </a>
+                                                    </Link>
                                                 </td>
                                                 <td class="product-name">
-                                                    <a href="#"
-                                                        >Lorem nec augue
-                                                    </a>
+                                                    <Link
+                                                        :href="`product-details/${cart.product?.slug}`"
+                                                    >
+                                                        {{
+                                                            cart.product?.title
+                                                        }}
+                                                    </Link>
                                                 </td>
                                                 <td class="product-price">
                                                     <span class="amounte"
-                                                        >$300.00</span
+                                                        >{{
+                                                            cart.product
+                                                                ?.customer_sales_price
+                                                        }}
+                                                        ৳</span
                                                     >
                                                 </td>
                                                 <td class="product-quantity">
                                                     <input
-                                                        value="1"
+                                                        :value="cart.quantity"
                                                         min="1"
                                                         type="number"
+                                                        :name="`cart[${cart.id}]`"
                                                     />
                                                 </td>
                                                 <td class="product-subtotal">
-                                                    <span class="sub-total"
-                                                        >$300.00</span
-                                                    >
-                                                </td>
-                                            </tr>
-                                            <tr class="cart-item">
-                                                <td class="product-remove">
-                                                    <a
-                                                        href="#"
-                                                        class="remove"
-                                                        title="Remove this item"
-                                                        >x</a
-                                                    >
-                                                </td>
-                                                <td class="product-thumbnail">
-                                                    <a href="#">
-                                                        <img
-                                                            src="frontend/assets/images/cart/2.jpg"
-                                                            alt=""
-                                                        />
-                                                    </a>
-                                                </td>
-                                                <td class="product-name">
-                                                    <a href="#"
-                                                        >Adipiscing cursus eu
-                                                    </a>
-                                                </td>
-                                                <td class="product-price">
-                                                    <span class="amounte"
-                                                        >$600.00</span
-                                                    >
-                                                </td>
-                                                <td class="product-quantity">
-                                                    <input
-                                                        value="10"
-                                                        min="1"
-                                                        type="number"
-                                                    />
-                                                </td>
-                                                <td class="product-subtotal">
-                                                    <span class="sub-total"
-                                                        >$600.00</span
-                                                    >
-                                                </td>
-                                            </tr>
-                                            <tr class="cart-item">
-                                                <td class="product-remove">
-                                                    <a
-                                                        href="#"
-                                                        class="remove"
-                                                        title="Remove this item"
-                                                        >x</a
-                                                    >
-                                                </td>
-                                                <td class="product-thumbnail">
-                                                    <a href="#">
-                                                        <img
-                                                            src="frontend/assets/images/cart/3.jpg"
-                                                            alt=""
-                                                        />
-                                                    </a>
-                                                </td>
-                                                <td class="product-name">
-                                                    <a href="#"
-                                                        >Cras nec nisl ut erat
-                                                    </a>
-                                                </td>
-                                                <td class="product-price">
-                                                    <span class="amounte"
-                                                        >$165.00</span
-                                                    >
-                                                </td>
-                                                <td class="product-quantity">
-                                                    <input
-                                                        value="48"
-                                                        min="1"
-                                                        type="number"
-                                                    />
-                                                </td>
-                                                <td class="product-subtotal">
-                                                    <span class="sub-total"
-                                                        >$165.00</span
-                                                    >
+                                                    <span class="sub-total">{{
+                                                        cart.product
+                                                            ?.customer_sales_price *
+                                                        cart.quantity
+                                                    }}</span>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td
+                                                    v-if="
+                                                        all_cart_data.length > 0
+                                                    "
                                                     colspan="6"
                                                     class="actions clear"
                                                 >
@@ -196,19 +141,50 @@
                                 <tbody>
                                     <tr>
                                         <td><strong>Subtotal</strong></td>
-                                        <td><b>$10,120.00</b></td>
+                                        <td>
+                                            <b>{{ total_cart_price }} ৳</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Delivery Charge</strong>
+                                            <select
+                                                name=""
+                                                id=""
+                                                v-model="delivery_charge"
+                                                class="mx-1"
+                                            >
+                                                <option value="50">
+                                                    Inside Dhaka
+                                                </option>
+                                                <option value="150">
+                                                    Outside Dhaka
+                                                </option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <b>{{ delivery_charge }} ৳</b>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td><strong>Total</strong></td>
-                                        <td><b>$10,120.00</b></td>
+                                        <td>
+                                            <b
+                                                >{{
+                                                    total_cart_price +
+                                                    Number(delivery_charge)
+                                                }}
+                                                ৳</b
+                                            >
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <div class="simple-product-form contuct-form mb-30">
-                            <form action="#">
+                            <Link :href="`checkout?delivery_charge=${delivery_charge}`">
                                 <button>Proceed to Checkout</button>
-                            </form>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -217,6 +193,51 @@
     </div>
 </template>
 <script>
-export default {};
+import { common_page_store } from "../../Shared/Store/index";
+import { mapActions, mapState } from "pinia";
+export default {
+    props: {
+        user_carts: {
+            type: Object,
+            required: true,
+        },
+    },
+    data: () => ({
+        cartItems: [],
+        delivery_charge: 50,
+    }),
+    created: async function () {
+        await this.get_all_cart_data();
+    },
+    methods: {
+        ...mapActions(common_page_store, {
+            get_all_cart_data: "get_all_cart_data",
+            remove_cart_item: "remove_cart_item",
+        }),
+        submitHandler: async function ($event) {
+            let formData = new FormData($event.target);
+            let response = await axios.post("cart-update", formData);
+
+            if (response.data.status === "success") {
+                window.s_alert(response.data.message);
+                await this.get_all_cart_data();
+            }
+        },
+
+        removeFromCart: async function (cartId) {
+            let response = await this.remove_cart_item(cartId);
+            if (response.data.status == "success") {
+                window.s_alert(response.data.message);
+                await this.get_all_cart_data();
+            }
+        },
+    },
+    computed: {
+        ...mapState(common_page_store, {
+            all_cart_data: "all_cart_data",
+            total_cart_price: "total_cart_price",
+        }),
+    },
+};
 </script>
 <style lang="scss" scoped></style>

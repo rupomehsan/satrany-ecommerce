@@ -20,9 +20,9 @@ if (!function_exists('entityResponse')) {
 }
 
 if (!function_exists('messageResponse')) {
-    function messageResponse($message = '', $statusCode = 200, $status = 'success')
+    function messageResponse($message = '', $statusCode = 200, $status = 'success', $data = [])
     {
-        return response(['status' => $status, 'statusCode' => $statusCode, 'message' => $message], $statusCode);
+        return response(['status' => $status, 'statusCode' => $statusCode, 'message' => $message, 'data' => $data], $statusCode);
     }
 }
 

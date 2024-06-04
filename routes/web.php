@@ -24,6 +24,7 @@ Route::get('/product-details/{slug}', [\App\Http\Controllers\Frontend\ProductCon
 Route::get('/cart', [\App\Http\Controllers\Frontend\CartController::class, 'index'])->name('cart.index');
 Route::get('/checkout', [\App\Http\Controllers\Frontend\CheckoutController::class, 'index'])->name('checkout.index');
 Route::get('/wishlist', [\App\Http\Controllers\Frontend\WishlistController::class, 'index'])->name('checkout.index');
+Route::get('/compare-list', [\App\Http\Controllers\Frontend\CompareListController::class, 'index'])->name('checkout.index');
 
 Route::get('/profile', [\App\Http\Controllers\Frontend\CustomerController::class, 'CustomerProfile'])->name('CustomerProfile');
 Route::get('/login', [\App\Http\Controllers\Frontend\LoginController::class, 'index'])->name('login.index');

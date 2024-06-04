@@ -8,8 +8,12 @@ use Inertia\Inertia;
 
 class CartController extends Controller
 {
+    static $model = \App\Modules\Cart\Actions\All::class;
     public function index()
     {
-        return Inertia::render('Cart/Index');
+        $cart = self::$model::execute(request());
+        return Inertia::render('Cart/Index',[
+            "user_carts" => $cart
+        ]);
     }
 }

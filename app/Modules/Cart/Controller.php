@@ -33,9 +33,14 @@ class Controller extends ControllersController
         return $data;
     }
 
-    public function update(Validation $request, $id)
+    public function update()
     {
-        $data = Update::execute($request, $id);
+        $data = Update::execute();
+        return $data;
+    }
+    public function customerOrder()
+    {
+        $data = Update::customerOrder();
         return $data;
     }
 

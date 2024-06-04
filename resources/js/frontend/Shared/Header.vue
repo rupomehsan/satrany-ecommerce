@@ -34,6 +34,11 @@
                                         >
                                     </li>
                                     <li>
+                                        <Link href="compare-list" class="text-white"
+                                            >Compare list</Link
+                                        >
+                                    </li>
+                                    <li>
                                         <Link href="login" class="text-white"
                                             >Login</Link
                                         >

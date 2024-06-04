@@ -8,15 +8,48 @@ class Update
 {
     static $model = \App\Modules\Cart\Models\Model::class;
 
-    public static function execute(Validation $request,$id)
+    public static function execute()
     {
         try {
-            if (!$data = self::$model::query()->where('id', $id)->first()) {
-                return messageResponse('Data not found...', 404, 'error');
+            // dd(request()->all());
+            $ids = [];
+            if (request()->cart && count(request()->cart)) {
+                foreach (request()->cart as $key => $item) {
+                    $data = self::$model::find($key);
+                    if ($data) {
+
+                        $data->quantity = $item;
+                        $data->save();
+                        $ids[] = $key;
+                    }
+                }
             }
-            $requestData = $request->validated();
-            $data->update($requestData);
-            return messageResponse('Item updated successfully');
+
+            $cartData = self::$model::with(['product:id,title,customer_sales_price,slug', 'product.product_images'])->whereIn('id', $ids)->get();
+            return messageResponse('Item updated successfully', 200, 'success', $cartData);
+        } catch (\Exception $e) {
+            return messageResponse($e->getMessage(), 500, 'server_error');
+        }
+    }
+    public static function customerOrder()
+    {
+        try {
+            dd(request()->all());
+            $ids = [];
+            if (request()->cart && count(request()->cart)) {
+                foreach (request()->cart as $key => $item) {
+                    $data = self::$model::find($key);
+                    if ($data) {
+
+                        $data->quantity = $item;
+                        $data->save();
+                        $ids[] = $key;
+                    }
+                }
+            }
+
+            $cartData = self::$model::with(['product:id,title,customer_sales_price,slug', 'product.product_images'])->whereIn('id', $ids)->get();
+            return messageResponse('Item updated successfully', 200, 'success', $cartData);
         } catch (\Exception $e) {
             return messageResponse($e->getMessage(), 500, 'server_error');
         }
