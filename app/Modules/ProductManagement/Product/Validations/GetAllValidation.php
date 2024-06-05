@@ -42,12 +42,12 @@ class GetAllValidation extends FormRequest
     public function rules(): array
     {
         return [
-            'limit' => 'sometimes',
-            'page' => 'sometimes',
-            'fields' => 'sometimes',
-            'sort_by_col' => 'sometimes',
-            'sort_type' => 'sometimes',
-            'status' => 'sometimes',
+            'limit' => 'required|sometimes',
+            'page' => 'required|sometimes',
+            'fields' => 'required|sometimes',
+            'sort_by_col' => 'required|sometimes',
+            'sort_type' => 'required|sometimes',
+            'status' => 'required|sometimes',
 
         ];
     }

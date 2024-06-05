@@ -127,7 +127,10 @@
                                         <li><i class="fa fa-star"></i></li>
                                         <li><i class="fa fa-star"></i></li>
                                     </ul>
-                                    <a href="#">(3 customer reviews)</a><br />
+                                    <span class="text-sm mx-2"
+                                        >(3 reviews)</span
+                                    >
+                                    <br />
                                     <span
                                         ><del>{{
                                             productDetails.maximum_sale_price
@@ -150,6 +153,7 @@
                                             name="quantity"
                                             value="1"
                                             type="number"
+                                            v-model="quantity"
                                         />
                                         <button
                                             @click.prevent="
@@ -166,6 +170,11 @@
                                     <ul>
                                         <li>
                                             <a
+                                                @click="
+                                                    addToWishList(
+                                                        productDetails.id
+                                                    )
+                                                "
                                                 href="#"
                                                 data-bs-toggle="tooltip"
                                                 title="Browser Wishlist"
@@ -174,6 +183,11 @@
                                         </li>
                                         <li class="mx-2">
                                             <a
+                                                @click="
+                                                    addToCompareList(
+                                                        productDetails.id
+                                                    )
+                                                "
                                                 href="#"
                                                 data-bs-toggle="tooltip"
                                                 title="Compare"
@@ -183,26 +197,27 @@
                                     </ul>
                                 </div>
                                 <div class="product_meta">
-                                    <b>SKU:</b> <span>W-hat-8</span>
+                                    <b>SKU : </b>
+                                    <span class="ms-2">{{ productDetails.sku }}</span>
                                     <div class="category mb-10">
-                                        <b>Categories:</b>
-                                        <a href="#">Accessories, </a>
-                                        <a href="#"> Clothing,</a>
-                                        <a href="#"> Hats,,</a>
-                                        <a href="#"> Hoodies</a>
+                                        <b>Categories : </b>
+                                        <a href="#" class="mx-2">{{
+                                            productDetails.product_categories[0]
+                                                .title ?? "N/A"
+                                        }}</a>
                                     </div>
                                     <div
                                         class="single-blog-tag category bb pb-10"
                                     >
-                                        <b>Tags:</b>
+                                        <b>Tags : </b>
                                         <a href="#">fashion,</a>
                                     </div>
 
                                     <div
                                         class="footer-content pt-15 text-uppercase"
                                     >
-                                        <p>Share this product</p>
-                                        <ul>
+                                        <!-- <p>Share this product</p> -->
+                                        <!-- <ul>
                                             <li>
                                                 <a
                                                     href="#"
@@ -253,7 +268,7 @@
                                                     ></i
                                                 ></a>
                                             </li>
-                                        </ul>
+                                        </ul> -->
                                     </div>
                                 </div>
                             </div>
@@ -563,6 +578,7 @@ export default {
     data() {
         return {
             productDetails: this.productDetailsData,
+            quantity: 1,
         };
     },
 
@@ -573,11 +589,37 @@ export default {
         addToCart: async function (productId) {
             const response = await axios.post("add-to-cart", {
                 productId: productId,
+                quantity: this.quantity,
             });
 
             if (response.data.status === "success") {
                 window.s_alert(response.data.message);
                 await this.get_all_cart_data();
+            }
+        },
+        addToWishList: async function (productId) {
+            const response = await axios.post("add-to-wish-list", {
+                productId: productId,
+            });
+
+            if (response.data.status === "success") {
+                window.s_alert(response.data.message);
+                this.get_all_cart_data();
+            }
+            if (response.data.status === "warning") {
+                window.w_alert(response.data.message);
+            }
+        },
+        addToCompareList: async function (productId) {
+            const response = await axios.post("add-to-compare-list", {
+                productId: productId,
+            });
+
+            if (response.data.status === "success") {
+                window.s_alert(response.data.message);
+            }
+            if (response.data.status === "warning") {
+                window.w_alert(response.data.message);
             }
         },
     },

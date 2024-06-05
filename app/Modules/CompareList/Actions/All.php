@@ -10,23 +10,22 @@ class All
     {
         try {
             // dd(request()->all());
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
+
             $offset = request()->input('offset') ?? 10;
             $condition = [];
-            $with = [];
+            $with = ['product:id,title,customer_sales_price,slug','product.product_images'];
             $data = self::$model::query();
-            if (request()->has('status') && request()->input('status')) {
-                $condition['status'] = request()->input('status');
+
+            $sessionId = $_SESSION['sessionId'] ?? session_id();
+            if ($sessionId) {
+                $condition['session_id'] = $sessionId;
             }
 
-            if (request()->has('search') && request()->input('search')) {
-                $data = $data->where('title', 'like', '%' . request()->input('search') . '%');
-            }
+            $data = $data->with($with)->where($condition)->get();
 
-            if (request()->has('get_all') && (int)request()->input('get_all') === 1) {
-                $data = $data->with($with)->where($condition)->latest()->get();
-            } else {
-                $data = $data->with($with)->where($condition)->latest()->paginate($offset);
-            }
             return entityResponse($data);
         } catch (\Exception $e) {
             return messageResponse($e->getMessage(), 500, 'server_error');

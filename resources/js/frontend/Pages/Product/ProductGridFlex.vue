@@ -1,7 +1,7 @@
 <template>
     <div class="product-wrapper single-featured mtb-15">
         <div class="product-img floatleft">
-            <Link href="product-details/slug">
+            <Link :href="`/product-details/${product.slug}`">
                 <img src="frontend/img/product/1.jpg" alt="" class="primary" />
                 <img
                     src="frontend/img/product/2.jpg"
@@ -12,7 +12,7 @@
         </div>
         <div class="product-content floatleft">
             <h3>
-                <Link :href="`product-details/${product.slugs}`">{{
+                <Link :href="`product-details/${product.slug}`">{{
                     product.title
                 }}</Link>
             </h3>

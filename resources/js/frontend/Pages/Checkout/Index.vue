@@ -284,7 +284,7 @@ import { mapActions, mapState } from "pinia";
 export default {
     data: () => ({
         cartItems: [],
-        delivery_charge: 0,
+        delivery_charge: 50,
         show_login_form: false,
         show_coupon_form: false,
         is_create_account: false,
@@ -292,7 +292,7 @@ export default {
     created: async function () {
         this.delivery_charge = new URLSearchParams(window.location.search).get(
             "delivery_charge"
-        );
+        ) ?? 50;
 
         await this.get_all_cart_data();
     },

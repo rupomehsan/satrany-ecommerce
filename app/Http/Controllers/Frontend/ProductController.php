@@ -16,7 +16,7 @@ class ProductController extends Controller
     }
     public function productDetails($slug)
     {
-        $producDetails = self::$productModel::where('slug', $slug)->first();
+        $producDetails = self::$productModel::with('product_categories', 'product_images')->where('slug', $slug)->first();
         $relatedProduct = self::$productModel::whereHas('product_categories')->limit(10)->get();
         return Inertia::render('Product/Details', [
             'productDetailsData' => $producDetails,

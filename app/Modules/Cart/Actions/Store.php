@@ -36,7 +36,7 @@ class Store
 
                 'session_id' => $sessionId,
                 'product_id' => $request->productId,
-                'quantity' => 1,
+                'quantity' =>  $request->quantity ??  1,
 
             ];
 
@@ -49,7 +49,7 @@ class Store
                 ->first();
 
             if ($isExistInCart) {
-                $isExistInCart->quantity += 1;
+                $isExistInCart->quantity += $request->quantity ?? 1;
                 $isExistInCart->save();
                 return messageResponse('Quantity updated', 200);
             }

@@ -9,12 +9,13 @@ class All
     public static function execute($request)
     {
         try {
+
             $pageLimit = request()->input('limit') ?? 10;
             $orderByColumn = request()->input('sort_by_col') ?? 'id';
-            $orderByType = request()->input('sort_type') ?? 'desc';
-            $status = request()->input('status') ?? 'active';
-            $fields = request()->input('fields') ?? '*';
-            $with = ['product_images'];
+            $orderByType = request()->input('sort_type') ?? 'asc';
+            $status = request()->input('status')    ?? 'active';
+            $fields = request()->input('fields')    ?? '*';
+            $with = [];
             $condition = [];
 
             $data = self::$model::query();

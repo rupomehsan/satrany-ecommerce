@@ -11,17 +11,17 @@ class Show
     public static function execute($slug)
     {
         try {
-            $with = [];
-            $fields = request()->input('fields') ?? [];
+            $with = ['product_categories',  'product_images'];
+            $fields = request()->input('fields') ?? ['*'];
             if (empty($fields)) {
                 $fields = ['*'];
             }
             if (!$data = self::$model::query()->with($with)->select($fields)->where('slug', $slug)->first()) {
-                return messageResponse('Data not found...',$data, 404, 'error');
+                return messageResponse('Data not found...', $data, 404, 'error');
             }
             return entityResponse($data);
         } catch (\Exception $e) {
-            return messageResponse($e->getMessage(),[], 500, 'server_error');
+            return messageResponse($e->getMessage(), [], 500, 'server_error');
         }
     }
 }
