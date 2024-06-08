@@ -9,7 +9,6 @@ class Model extends EloquentModel
 {
     protected $table = "product_brands";
     protected $guarded = [];
-    static $productModel = \App\Modules\ProductManagement\Product\Models\Model::class;
 
     protected static function booted()
     {
@@ -20,19 +19,10 @@ class Model extends EloquentModel
             if (strlen($data->slug) > 150) {
                 $data->slug = substr($data->slug, strlen($data->slug) - 150, strlen($data->slug));
             }
-            if (auth()->check()) {
-                $data->creator = auth()->user()->id;
-            }
+
             $data->save();
         });
     }
-
-
-    public function products()
-    {
-        return $this->hasMany(self::$productModel, 'product_brand_id');
-    }
-
 
     public function scopeActive($q)
     {

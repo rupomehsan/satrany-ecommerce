@@ -1,7 +1,11 @@
 import Layout from "./Layout.vue";
 import Dashboard from "../Dashboard.vue";
 
-// import user_routes from "../management/user/setup/routes";
+import slider_routes from "../management/slider/setup/routes";
+
+import product_category_routes from "../management/ProductManagement/ProductCategory/setup/routes";
+import product_brand_routes from "../management/ProductManagement/ProductBrand/setup/routes";
+import product_routes from "../management/ProductManagement/Product/setup/routes";
 
 
 const routes = {
@@ -14,7 +18,10 @@ const routes = {
             name: "SuperAdminDashboard",
         },
 
-        // user_routes,
+        slider_routes,
+        product_category_routes,
+        product_brand_routes,
+        product_routes,
 
     ],
 };

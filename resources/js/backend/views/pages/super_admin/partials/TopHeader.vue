@@ -164,20 +164,25 @@
 </template>
 
 <script>
-
+import { mapActions } from "pinia";
+import { auth_store } from "../../../../store/auth_store";
 export default {
     data: () => ({
         show_notification: 0,
     }),
 
     methods: {
+        ...mapActions(auth_store, ["log_out"]),
         toggle_menu: function () {
             document.getElementById('wrapper').classList.toggle('toggled');
         },
+
         logout: function () {
-            localStorage.removeItem('token')
-            window.location.href = '/'
-        }
+            let confirm = window.confirm("logout");
+            if (confirm) {
+                this.log_out();
+            }
+        },
 
 
     },

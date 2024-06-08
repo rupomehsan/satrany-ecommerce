@@ -50,23 +50,27 @@
 </template>
 
 <script>
+import { mapActions, mapState } from "pinia";
+import { auth_store } from "../store/auth_store";
 import TopHeader from './pages/super_admin/partials/TopHeader.vue'
 export default {
     components: { TopHeader },
-    created: function () {
-        let prev_url = window.sessionStorage.getItem('prevurl');
-        let token = localStorage.getItem('token');
-        if (token) {
-            window.location.hash = prev_url || "/admin#/";
-        } else {
-            window.location.href = 'login';
-        }
-    },
     data: () => ({
         rightToggle: false,
     }),
+    created: async function () {
 
+        if (!window.localStorage.getItem("token")) {
+            window.location.href = window.location.origin;
+        }
+        await this.check_is_auth();
+
+    },
     methods: {
+
+        ...mapActions(auth_store, {
+            check_is_auth: "check_is_auth",
+        }),
         changeTheme(id) {
             const totalThemes = Array.from({ length: 15 }, (_, i) => i + 1);
             const newThemeNo = "bg-theme" + id;
@@ -82,9 +86,38 @@ export default {
             body.classList.add(newThemeNo);
         }
 
-    }
+    },
+
+    watch: {
+        is_auth: {
+            handler: function (v) {
+                let prev_url = window.sessionStorage.getItem("prevurl");
+
+                switch (this.role.name) {
+                    case "super_admin":
+                    case "admin":
+                        window.location.href = prev_url ?? `#/dashboard`;
+                        break;
+                    case "customer":
+                        window.location.href = window.location.origin;
+                        break;
+                    default:
+                        window.location.href = window.location.origin;
+                }
+            },
+            deeps: true,
+        },
+    },
+
+    computed: {
+        ...mapState(auth_store, {
+            is_auth: "is_auth",
+            auth_info: "auth_info",
+            role: "role",
+        }),
+    },
+
 }
 </script>
 
 <style></style>
-

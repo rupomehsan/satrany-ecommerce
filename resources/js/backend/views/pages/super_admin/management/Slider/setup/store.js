@@ -20,6 +20,8 @@ export const slider_setup_store = defineStore("slider_setup_store", {
                 response = await axios.get(this.api);
             }
             this.all_data = response.data.data;
+
+            console.log(this.all_data);
         },
 
         get: async function (id) {

@@ -35,32 +35,53 @@
                 </router-link>
             </li>
 
+            <side-bar-single-menu
+                :menu_title="`Slider`"
+                :route_name="`AllSlider`"
+                :icon="`fa fa-plus`"
+            />
 
-            <!-- <li class="menu-label mt-0">Blog</li> -->
             <side-bar-drop-down-menus
                 :icon="`fa fa-plus`"
                 :menu_title="`Product Management`"
                 :menus="[
                     {
-                        route_name: ``,
+                        route_name: `AllProductCategory`,
                         title: `Categories`,
                     },
                     {
-                        route_name: ``,
+                        route_name: `AllProductBrand`,
                         title: `Brands`,
                     },
+
                     {
-                        route_name: ``,
-                        title: `Attributes`,
-                    },
-                    {
-                        route_name: ``,
+                        route_name: `AllProduct`,
                         title: `Products`,
                     },
                 ]"
             />
-
-
+            <side-bar-drop-down-menus
+                :icon="`fa fa-plus`"
+                :menu_title="`Order Management`"
+                :menus="[
+                    {
+                        route_name: ``,
+                        title: `All Order`,
+                    },
+                    {
+                        route_name: ``,
+                        title: `Pending Order`,
+                    },
+                    {
+                        route_name: ``,
+                        title: `Corfirmed Order`,
+                    },
+                    {
+                        route_name: ``,
+                        title: `Canceled Order`,
+                    },
+                ]"
+            />
         </ul>
     </div>
 </template>
@@ -70,19 +91,13 @@ import { mapActions } from "pinia";
 import { auth_store } from "../../../../store/auth_store";
 import SideBarDropDownMenus from "./SideBarDropDownMenus.vue";
 import SideBarSingleMenu from "./SideBarSingleMenu.vue";
+
 export default {
     data: () => ({
         showSidebar: true,
     }),
     components: { SideBarDropDownMenus, SideBarSingleMenu },
     methods: {
-        ...mapActions(auth_store, ["log_out"]),
-        logout_submit: function () {
-            let confirm = window.confirm("logout");
-            if (confirm) {
-                this.log_out();
-            }
-        },
         toggle_menu: function () {
             document.getElementById("wrapper").classList.toggle("toggled");
         },

@@ -23,8 +23,9 @@ class Login
                 DB::table('oauth_access_tokens')->where("user_id", $check_auth_user->id)->update(['revoked' => 1]);
                 $data['access_token'] = $check_auth_user->createToken('accessToken')->accessToken;
                 $data['user'] = $check_auth_user;
-                return messageResponse('Successfully Loged In', $data, 200, 'success');
+                return messageResponse('Successfully Loged In',  200, 'success', $data);
             } else {
+
                 // if ($check_auth_user->no_of_attempt > 2) {
                 //     $check_auth_user->is_blocked = 1;
                 // }
@@ -32,7 +33,8 @@ class Login
                 return response()->json(['status' => 'error', 'message' => 'Sorry,user not found'], 404);
             }
         } catch (\Exception $e) {
-            return messageResponse($e->getMessage(), 500, 'server_error');
+            dd($e);
+            return messageResponse($e->getMessage(),  500, 'server_error', []);
         }
     }
 }

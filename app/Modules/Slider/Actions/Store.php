@@ -12,7 +12,12 @@ class Store
     public static function execute(Validation $request)
     {
         try {
+            // dd($request->all());
             $requestData = $request->validated();
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $requestData['image'] = uploader($image, 'slider');
+            }
             if (self::$model::query()->create($requestData)) {
                 return messageResponse('Item added successfully', 201);
             }

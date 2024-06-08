@@ -3,15 +3,10 @@
 namespace App\Modules\ProductManagement\ProductCategory;
 
 use App\Modules\ProductManagement\ProductCategory\Actions\All;
-use App\Modules\ProductManagement\ProductCategory\Actions\Destroy;
+use App\Modules\ProductManagement\ProductCategory\Actions\Delete;
 use App\Modules\ProductManagement\ProductCategory\Actions\Show;
 use App\Modules\ProductManagement\ProductCategory\Actions\Store;
 use App\Modules\ProductManagement\ProductCategory\Actions\Update;
-use App\Modules\ProductManagement\ProductCategory\Actions\SoftDelete;
-use App\Modules\ProductManagement\ProductCategory\Actions\Restore;
-use App\Modules\ProductManagement\ProductCategory\Actions\Import;
-use App\Modules\ProductManagement\ProductCategory\Validations\BulkActionsValidation;
-use App\Modules\ProductManagement\ProductCategory\Validations\GetAllValidation;
 use App\Modules\ProductManagement\ProductCategory\Validations\Validation;
 use App\Modules\ProductManagement\ProductCategory\Actions\BulkActions;
 use App\Http\Controllers\Controller as ControllersController;
@@ -20,9 +15,9 @@ use App\Http\Controllers\Controller as ControllersController;
 class Controller extends ControllersController
 {
 
-    public function index(GetAllValidation $request)
+    public function index()
     {
-        $data = All::execute($request);
+        $data = All::execute();
         return $data;
     }
 
@@ -32,41 +27,26 @@ class Controller extends ControllersController
         return $data;
     }
 
-    public function show($slug)
+    public function show($id)
     {
-        $data = Show::execute($slug);
+        $data = Show::execute($id);
         return $data;
     }
 
-    public function update(Validation $request, $slug)
+    public function update(Validation $request, $id)
     {
-        $data = Update::execute($request, $slug);
+        $data = Update::execute($request, $id);
         return $data;
     }
 
-    public function softDelete()
+    public function destroy($id)
     {
-        $data = SoftDelete::execute();
+        $data = Delete::execute($id);
         return $data;
     }
-    public function destroy($slug)
+    public function bulkAction()
     {
-        $data = Destroy::execute($slug);
-        return $data;
-    }
-    public function restore()
-    {
-        $data = Restore::execute();
-        return $data;
-    }
-    public function import()
-    {
-        $data = Import::execute();
-        return $data;
-    }
-    public function bulkAction(BulkActionsValidation $request)
-    {
-        $data = BulkActions::execute($request);
+        $data = BulkActions::execute();
         return $data;
     }
 
