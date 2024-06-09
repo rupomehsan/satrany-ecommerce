@@ -295,7 +295,7 @@
     <div class="container-fluid clearfix">
         <div class="row justify-content-end">
             <div class="col-lg-8">
-                <hero-slider></hero-slider>
+                <hero-slider :sliders="$page.props.sliders"></hero-slider>
             </div>
         </div>
     </div>
@@ -325,7 +325,7 @@
                                         :href="`products?category=${category.slug}`"
                                     >
                                         <img
-                                            src="frontend/assets/images/banner/4.jpg"
+                                            :src="`/${category.image ?? 'dummy.png'}`"
                                             alt=""
                                         />
                                     </Link>
@@ -366,7 +366,7 @@
                         <div
                             class="woocommerce-pagination-area bg-fff box-shadow ptb-20 mt-2"
                         >
-                            <div
+                            <!-- <div
                                 class="woocommerce-pagination text-center hover-bg"
                             >
                                 <ul>
@@ -380,7 +380,7 @@
                                         ></Link>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

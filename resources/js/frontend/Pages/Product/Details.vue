@@ -17,49 +17,22 @@
                                         >
                                             <a
                                                 class="popup"
-                                                href="/frontend/img/product/latest.jpg"
+                                                target="_blank"
+                                                :href="`/${productDetails.images?.length ? productDetails.images[0].url: 'dummy.png'}`"
                                             >
                                                 <img
-                                                    src="/frontend/img/product/latest.jpg"
+                                                    :src="`/${
+                                                        productDetails.images
+                                                            .length
+                                                            ? productDetails
+                                                                  .images[0].url
+                                                            : 'dummy.png'
+                                                    }`"
                                                     alt=""
+                                                    style="width: 100%"
                                                 />
                                             </a>
                                         </div>
-                                        <!-- <div role="tabpanel" class="tab-pane fade" id="two">
-                                            <a class="popup" href="/frontend/img/product/2.jpg">
-                                                <img src="/frontend/img/product/2.jpg" alt="" />
-                                            </a>
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane fade" id="three">
-                                            <a class="popup" href="/frontend/img/product/3.jpg">
-                                                <img src="/frontend/img/product/3.jpg" alt="" />
-                                            </a>
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane fade" id="four">
-                                            <a class="popup" href="/frontend/img/product/4.jpg">
-                                                <img src="/frontend/img/product/4.jpg" alt="" />
-                                            </a>
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane fade" id="five">
-                                            <a class="popup" href="/frontend/img/product/5.jpg">
-                                                <img src="/frontend/img/product/5.jpg" alt="" />
-                                            </a>
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane fade" id="six">
-                                            <a class="popup" href="/frontend/img/product/6.jpg">
-                                                <img src="/frontend/img/product/6.jpg" alt="" />
-                                            </a>
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane fade" id="seven">
-                                            <a class="popup" href="/frontend/img/product/7.jpg">
-                                                <img src="/frontend/img/product/7.jpg" alt="" />
-                                            </a>
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane fade" id="eight">
-                                            <a class="popup" href="/frontend/img/product/8.jpg">
-                                                <img src="/frontend/img/product/8.jpg" alt="" />
-                                            </a>
-                                        </div> -->
                                     </div>
                                 </div>
                                 <div
@@ -69,44 +42,25 @@
                                         class="nav single-product-active clear gap-1 p-1"
                                     >
                                         <div class="single-img floatleft">
-                                            <a href="#one" data-bs-toggle="tab">
-                                                <img
-                                                    src="/frontend/img/product/1.jpg"
-                                                    alt=""
-                                                    height="60"
-                                                    width="125"
-                                                />
-                                            </a>
-                                        </div>
-                                        <div class="single-img floatleft">
-                                            <a href="#one" data-bs-toggle="tab">
-                                                <img
-                                                    src="/frontend/img/product/1.jpg"
-                                                    alt=""
-                                                    height="60"
-                                                    width="125"
-                                                />
-                                            </a>
-                                        </div>
-                                        <div class="single-img floatleft">
-                                            <a href="#one" data-bs-toggle="tab">
-                                                <img
-                                                    src="/frontend/img/product/1.jpg"
-                                                    alt=""
-                                                    height="60"
-                                                    width="125"
-                                                />
-                                            </a>
-                                        </div>
-                                        <div class="single-img floatleft">
-                                            <a href="#one" data-bs-toggle="tab">
-                                                <img
-                                                    src="/frontend/img/product/1.jpg"
-                                                    alt=""
-                                                    height="60"
-                                                    width="125"
-                                                />
-                                            </a>
+                                            <template
+                                                v-for="(
+                                                    image, index
+                                                ) in productDetails.images"
+                                                :key="productDetails.images"
+                                            >
+                                                <a
+                                                    :href="`#${index}`"
+                                                    data-bs-toggle="tab"
+                                                    class="mx-1"
+                                                >
+                                                    <img
+                                                        :src="`/${image.url}`"
+                                                        alt=""
+                                                        height="60"
+                                                        width="125"
+                                                    />
+                                                </a>
+                                            </template>
                                         </div>
                                     </div>
                                 </div>
@@ -197,20 +151,23 @@
                                     </ul>
                                 </div>
                                 <div class="product_meta">
-                                    <b>SKU : </b>
-                                    <span class="ms-2">{{ productDetails.sku }}</span>
+                                    <span class="ms-2">{{
+                                        productDetails.sku
+                                    }}</span>
                                     <div class="category mb-10">
                                         <b>Categories : </b>
                                         <a href="#" class="mx-2">{{
-                                            productDetails.product_categories[0]
-                                                .title ?? "N/A"
+                                            productDetails.category.title ??
+                                            "N/A"
                                         }}</a>
                                     </div>
                                     <div
                                         class="single-blog-tag category bb pb-10"
                                     >
-                                        <b>Tags : </b>
-                                        <a href="#">fashion,</a>
+                                        <b>Brand : </b>
+                                        <a href="#">{{
+                                            productDetails.brand.title
+                                        }}</a>
                                     </div>
 
                                     <div
@@ -286,11 +243,11 @@
                                         >Description</a
                                     >
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="#reviews" data-bs-toggle="tab"
                                         >Reviews (3)</a
                                     >
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                         <div class="tab-content bg-fff">
@@ -300,9 +257,9 @@
                             >
                                 <div class="product-description p-20 bt">
                                     <h2>Product Description</h2>
-                                    <p>
-                                        {{ productDetails.description }}
-                                    </p>
+                                    <div
+                                        v-html="productDetails.description"
+                                    ></div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="reviews">

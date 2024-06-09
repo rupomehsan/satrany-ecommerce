@@ -2,9 +2,21 @@
     <div class="product-wrapper single-featured mtb-15">
         <div class="product-img floatleft">
             <Link :href="`/product-details/${product.slug}`">
-                <img src="frontend/img/product/1.jpg" alt="" class="primary" />
                 <img
-                    src="frontend/img/product/2.jpg"
+                    :src="`/${
+                        product.images.length
+                            ? product.images[0].url
+                            : 'dummy.png'
+                    }`"
+                    alt=""
+                    class="primary"
+                />
+                <img
+                    :src="`/${
+                        product.images.length
+                            ? (product.images[1]?.url ??'dummy.png')
+                            : 'dummy.png'
+                    }`"
                     alt=""
                     class="secondary"
                 />
@@ -33,7 +45,7 @@
                     <i class="fa fa-star"></i>
                 </li>
             </ul>
-            <span>{{ product.customer_sales_price }} ৳</span>
+            <span>{{ product.price }} ৳</span>
         </div>
     </div>
 </template>

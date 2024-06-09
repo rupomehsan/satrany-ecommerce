@@ -4,6 +4,8 @@ export const product_setup_store = defineStore("product_setup_store", {
     state: () => ({
         all_data: {},
         single_data: {},
+        all_categories_data: {},
+        all_brands_data: {},
         role_data: {},
         api:"products"
     }),
@@ -60,6 +62,16 @@ export const product_setup_store = defineStore("product_setup_store", {
         // additional function
         // additional function
 
+        get_all_categories: async function (id) {
+            let response = await axios.get(`product-categories?get_all=1`);
+            response = response.data.data;
+            this.all_categories_data = response;
+        },
+        get_all_brands: async function (id) {
+            let response = await axios.get(`product-brands?get_all=1`);
+            response = response.data.data;
+            this.all_brands_data = response;
+        },
 
     },
 });

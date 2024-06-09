@@ -20,10 +20,11 @@ export default [
 	// 	value: "",
 	// },
 
-	// {
-	// 	name: "image",
-	// 	label: "Enter your image",
-	// 	type: "text",
-	// 	value: "",
-	// },
+	{
+		name: "image",
+		label: "Enter your image",
+		type: "file",
+		value: "",
+        
+	},
 ];

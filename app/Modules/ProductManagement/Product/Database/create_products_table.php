@@ -15,23 +15,23 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
-            $table->enum('type',['value1','value2'])->nullable();
             $table->text('short_description')->nullable();
             $table->string('description')->nullable();
             $table->string('menufecturer_id')->nullable();
             $table->string('brand_id')->nullable();
+            $table->string('category_id')->nullable();
             $table->string('sku')->nullable();
             $table->string('unit')->nullable();
+            $table->string('quantity')->nullable();
             $table->string('alert_quantity')->nullable();
             $table->string('saller_points')->nullable();
             $table->tinyInteger('is_returnable')->nullable();
             $table->datetime('expiration_days')->nullable();
-            $table->string('purchase_price')->nullable();
+            $table->string('price')->nullable();
             $table->string('purchase_account')->nullable();
-            $table->enum('discount_type',['value1','value2'])->nullable();
+            $table->enum('discount_type',['percentage','amount'])->nullable();
             $table->string('discount_amount')->nullable();
             $table->string('tax_id')->nullable();
-            $table->enum('tax_type',['value1','value2'])->nullable();
             $table->string('vat_on_sale')->nullable();
             $table->string('vat_on_purchase')->nullable();
 

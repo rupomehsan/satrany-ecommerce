@@ -74,8 +74,8 @@
                                     <th class="text-start">SL</th>
                                     <th>title</th>
                                     <!-- <th>parent_id</th>
-                                    <th>serial</th>
-                                    <th>image</th> -->
+                                    <th>serial</th> -->
+                                    <th>image</th>
                                     <th>status</th>
                                     <th class="text-end">Action</th>
                                 </tr>
@@ -99,8 +99,8 @@
                                     <td class="text-start">{{ index + 1 }}</td>
                                     <th>{{ item.title }}</th>
                                     <!-- <th>{{ item.parent_id }}</th>
-                                    <th>{{ item.serial }}</th>
-                                    <th>{{ item.image }}</th> -->
+                                    <th>{{ item.serial }}</th> -->
+                                    <th> <img :src="item.image ?? 'dummy.png'" alt="" height="50" width="100" style="object-fit: cover;"></th>
                                     <td>{{ item.status }}</td>
                                     <td style="width: 100px">
                                         <div

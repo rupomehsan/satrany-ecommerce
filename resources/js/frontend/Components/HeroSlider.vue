@@ -7,49 +7,37 @@
                 data-bs-ride="carousel"
             >
                 <div class="carousel-indicators">
-                    <button
-                        type="button"
-                        data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide-to="0"
-                        class="active"
-                        aria-current="true"
-                        aria-label="Slide 1"
-                    ></button>
-                    <button
-                        type="button"
-                        data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide-to="1"
-                        aria-label="Slide 2"
-                    ></button>
-                    <button
-                        type="button"
-                        data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide-to="2"
-                        aria-label="Slide 3"
-                    ></button>
+                    <template
+                        v-for="(slider, index) in sliders.original.data"
+                        :key="index"
+                    >
+                        <button
+                            type="button"
+                            data-bs-target="#carouselExampleIndicators"
+                            :data-bs-slide-to="index"
+                            :class="index === 0 ? 'active' : ''"
+                            :aria-current="index === 0 ? 'true' : 'false'"
+                            :aria-label="`Slide ${index + 1}`"
+                        ></button>
+                    </template>
+
                 </div>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img
-                            src="https://m2ce.sindabad.com/pub/media/scriptlodge/banner/image//web/watch1420en.jpg"
-                            class="d-block w-100"
-                            alt="..."
-                        />
-                    </div>
-                    <div class="carousel-item">
-                        <img
-                            src="https://via.placeholder.com/1100x350.png/004422?text=id"
-                            class="d-block w-100"
-                            alt="..."
-                        />
-                    </div>
-                    <div class="carousel-item">
-                        <img
-                            src="https://via.placeholder.com/1100x350.png/00dd44?text=nulla"
-                            class="d-block w-100"
-                            alt="..."
-                        />
-                    </div>
+                    <template
+                        v-for="(slider, index) in sliders.original.data"
+                        :key="index"
+                    >
+                        <div
+                            class="carousel-item"
+                            :class="index === 0 ? 'active' : ''"
+                        >
+                            <img
+                                :src="`${slider.image}`"
+                                class="d-block w-100"
+                                alt="..."
+                            />
+                        </div>
+                    </template>
                 </div>
                 <button
                     class="carousel-control-prev"
@@ -88,6 +76,12 @@ import * as Bootstrap from "bootstrap";
 //import DemoComponent from "./components/DemoComponent.vue"
 
 export default {
+    props: {
+        sliders: Object,
+    },
+    created() {
+        console.log("slider", this.sliders);
+    },
     mounted() {
         try {
             var myCarousel = document.querySelector(
@@ -105,7 +99,7 @@ export default {
 };
 </script>
 <style>
-.carousel-control-prev-icon {
+/* .carousel-control-prev-icon {
     border: 3px solid rgba(1, 216, 231, 0.61);
     background-color: rgba(37, 6, 110, 0.473);
     padding: 20px;
@@ -116,5 +110,5 @@ export default {
     background-color: rgba(37, 6, 110, 0.473);
     padding: 20px;
     border-radius: 50%;
-}
+} */
 </style>

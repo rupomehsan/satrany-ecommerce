@@ -6,17 +6,5 @@ export default [
 		value: "",
 	},
 
-	{
-		name: "serial",
-		label: "Enter your serial",
-		type: "text",
-		value: "",
-	},
 
-	{
-		name: "image",
-		label: "Enter your image",
-		type: "text",
-		value: "",
-	},
 ];

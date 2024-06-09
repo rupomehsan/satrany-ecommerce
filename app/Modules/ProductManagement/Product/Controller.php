@@ -49,5 +49,10 @@ class Controller extends ControllersController
         $data = BulkActions::execute();
         return $data;
     }
+    public function productImageDelete($id)
+    {
+        $data = Delete::productImageDelete($id);
+        return $data;
+    }
 
 }

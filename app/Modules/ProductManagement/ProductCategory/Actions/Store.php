@@ -13,6 +13,11 @@ class Store
     {
         try {
             $requestData = $request->validated();
+            if($request->hasFile('image')) {
+                $image = $request->file('image');
+                $url = uploader($image, 'uploads/product-category');
+                $requestData['image'] = $url;
+            }
             if (self::$model::query()->create($requestData)) {
                 return messageResponse('Item added successfully', 201);
             }
