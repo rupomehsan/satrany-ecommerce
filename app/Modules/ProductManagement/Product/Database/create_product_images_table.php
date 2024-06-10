@@ -7,12 +7,12 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     php artisan migrate --path='\App\Modules\ProductManagement\Product\Database\create_product_images_table.php'
+     php artisan migrate --path='\App\Modules\ProductManagement\Product\Database\create_images_table.php'
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('product_images', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('product_id')->nullable();
             $table->string('caption', 150)->nullable();
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_images');
+        Schema::dropIfExists('images');
     }
 };

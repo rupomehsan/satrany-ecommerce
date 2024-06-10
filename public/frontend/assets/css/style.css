@@ -415,11 +415,11 @@ select {
 }
 
 .bg-img {
-    background: url(../images/bg/1.png) no-repeat 0 0 / cover;
+    background: url(../../img/facebook/banner/1.jpg) no-repeat 0 0 / cover;
 }
 
 .bg-img-2 {
-    background: url(../images/bg/2.jpg) no-repeat 0 0 / cover;
+    background: url(../../img/facebook/banner/2.jpg) no-repeat 0 0 / cover;
 }
 
 .h2-color {

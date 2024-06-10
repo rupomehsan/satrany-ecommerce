@@ -65,19 +65,23 @@
                 :menu_title="`Order Management`"
                 :menus="[
                     {
-                        route_name: ``,
+                        route_name: `AllOrder`,
                         title: `All Order`,
                     },
                     {
-                        route_name: ``,
+                        route_name: `PendingOrder`,
                         title: `Pending Order`,
                     },
                     {
-                        route_name: ``,
-                        title: `Corfirmed Order`,
+                        route_name: `AcceptedOrder`,
+                        title: `Accepted Order`,
                     },
                     {
-                        route_name: ``,
+                        route_name: `DeliveredOrder`,
+                        title: `Delivered Order`,
+                    },
+                    {
+                        route_name: `CanceledOrder`,
                         title: `Canceled Order`,
                     },
                 ]"

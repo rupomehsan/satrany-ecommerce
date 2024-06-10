@@ -1,10 +1,10 @@
 <template>
     <div class="container">
 
-        <div class="row mt-3">
-            <div class="col-lg-6">
+        <div class="row mt-3 justify-content-center">
+            <div class="col-lg-6 card my-5 p-2">
                 <div class="account-heading mb-25">
-                    <h2>Login</h2>
+                    <h2 class="text-center">Login</h2>
                 </div>
                 <div class="account-form form-style p-20 mb-30 bg-fff box-shadow">
                     <form @submit.prevent="submitHandlerForLogin">
@@ -26,7 +26,7 @@
 
                 </div>
             </div>
-            <div class="col-lg-6">
+            <!-- <div class="col-lg-6">
                 <div class="account-heading mb-25">
                     <h2>Register</h2>
                 </div>
@@ -47,7 +47,7 @@
                         <button>register</button>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>

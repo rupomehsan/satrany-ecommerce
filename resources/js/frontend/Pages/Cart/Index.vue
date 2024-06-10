@@ -6,9 +6,9 @@
                 <div class="woocommerce-breadcrumb mtb-15">
                     <div class="menu">
                         <ul>
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="/">Home</a></li>
                             <li class="active">
-                                <a href="cart.html">cart</a>
+                                <a href="cart">cart</a>
                             </li>
                         </ul>
                     </div>
@@ -70,7 +70,7 @@
                                                         :href="`product-details/${cart.product?.slug}`"
                                                     >
                                                         <img
-                                                            src="frontend/assets/images/cart/1.jpg"
+                                                            :src="cart.product?.images.length ? cart.product?.images[0].url : 'dummy.png'"
                                                             alt=""
                                                         />
                                                     </Link>
@@ -88,7 +88,7 @@
                                                     <span class="amounte"
                                                         >{{
                                                             cart.product
-                                                                ?.customer_sales_price
+                                                                ?.price
                                                         }}
                                                         ৳</span
                                                     >
@@ -104,7 +104,7 @@
                                                 <td class="product-subtotal">
                                                     <span class="sub-total">{{
                                                         cart.product
-                                                            ?.customer_sales_price *
+                                                            ?.price *
                                                         cart.quantity
                                                     }}</span>
                                                 </td>

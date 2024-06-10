@@ -7,6 +7,8 @@ import product_category_routes from "../management/ProductManagement/ProductCate
 import product_brand_routes from "../management/ProductManagement/ProductBrand/setup/routes";
 import product_routes from "../management/ProductManagement/Product/setup/routes";
 
+import order_routes from "../management/OrderManagement/setup/routes";
+
 
 const routes = {
     path: "/",
@@ -22,6 +24,8 @@ const routes = {
         product_category_routes,
         product_brand_routes,
         product_routes,
+
+        order_routes,
 
     ],
 };

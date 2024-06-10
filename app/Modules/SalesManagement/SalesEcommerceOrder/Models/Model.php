@@ -7,6 +7,8 @@ use Illuminate\Support\Str;
 
 class Model extends EloquentModel
 {
+
+    static $orderProductModel = \App\Modules\SalesManagement\SalesEcommerceOrder\Models\SalesEcommerceOrderProductModel::class;
     protected $table = "sales_ecommerce_orders";
     protected $guarded = [];
 
@@ -29,5 +31,10 @@ class Model extends EloquentModel
     public function scopeActive($q)
     {
         return $q->where('status', 'active');
+    }
+
+    public function order_products()
+    {
+        return $this->hasMany(self::$orderProductModel, 'sales_ecommerce_order_id');
     }
 }

@@ -17,25 +17,25 @@
                               </p>
                               <ul>
                                   <li>
-                                      <a href="#" data-bs-toggle="tooltip" title="Facebook"><i
+                                      <a href="https://www.facebook.com/profile.php?id=61559927879097" target="_blank" data-bs-toggle="tooltip" title="Facebook"><i
                                               class="fa fa-facebook"></i></a>
                                   </li>
-                                  <li>
+                                  <!-- <li>
                                       <a href="#" data-bs-toggle="tooltip" title="Twetter"><i
                                               class="fa fa-twitter"></i></a>
-                                  </li>
+                                  </li> -->
                                   <li>
-                                      <a href="#" data-bs-toggle="tooltip" title="Instagram"><i
+                                      <a href="https://www.instagram.com/satrani56/" target="_blank" data-bs-toggle="tooltip" title="Instagram"><i
                                               class="fa fa-instagram"></i></a>
                                   </li>
-                                  <li>
+                                  <!-- <li>
                                       <a href="#" data-bs-toggle="tooltip" title="Google-Plus"><i
                                               class="fa fa-google-plus"></i></a>
                                   </li>
                                   <li>
                                       <a href="#" data-bs-toggle="tooltip" title="Linkedin"><i
                                               class="fa fa-linkedin"></i></a>
-                                  </li>
+                                  </li> -->
                               </ul>
                           </div>
                       </div>

@@ -90,7 +90,7 @@
                                             productDetails.maximum_sale_price
                                         }}</del
                                         ><span>{{
-                                            productDetails.customer_sales_price
+                                            productDetails.price
                                         }}</span></span
                                     >
                                 </div>

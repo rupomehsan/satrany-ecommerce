@@ -36,3 +36,7 @@ createInertiaApp({
     title: title  => `Satrany ecommerce : ${title}`
 });
 
+// Preserve scroll globally
+Inertia.on('navigate', (event) => {
+    event.detail.page.props.preserveScroll = true;
+});

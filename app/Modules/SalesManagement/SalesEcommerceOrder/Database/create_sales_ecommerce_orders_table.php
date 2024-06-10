@@ -18,11 +18,22 @@ return new class extends Migration
             $table->string('order_id', 100)->nullable();
             $table->date('date')->nullable();
 
+            $table->string('session_id', 100)->nullable();
+            $table->string('first_name', 100)->nullable();
+            $table->string('last_name', 100)->nullable();
+            $table->string('email', 100)->nullable();
+            $table->string('phone', 100)->nullable();
+            $table->string('address', 100)->nullable();
+            $table->string('order_notes', 200)->nullable();
+
+
+
+
             $table->enum('user_type', ['ecommerce', 'retail_order'])->nullable();
             $table->bigInteger('customer_id')->nullable()->unsigned();
 
             $table->tinyInteger('is_delivered')->default(0);
-            $table->enum('order_status', ['pending', 'acccepted', 'processing', 'on_the_way',  'delivered',  'cancelled', 'refunded'])->nullable();
+            $table->enum('order_status', ['pending', 'accepted', 'processing', 'on_the_way',  'delivered',  'cancelled', 'refunded'])->nullable();
 
             $table->bigInteger('user_address_id')->nullable();
             $table->enum('delivery_method', ['pickup', 'courier', 'home_delivery'])->nullable();

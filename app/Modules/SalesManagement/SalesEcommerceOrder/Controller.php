@@ -20,27 +20,27 @@ use App\Http\Controllers\Controller as ControllersController;
 class Controller extends ControllersController
 {
 
-    public function index(GetAllValidation $request)
+    public function index()
     {
-        $data = All::execute($request);
+        $data = All::execute();
         return $data;
     }
 
-    public function store(Validation $request)
+    public function store()
     {
-        $data = Store::execute($request);
+        $data = Store::execute();
         return $data;
     }
 
-    public function show($slug)
+    public function show($id)
     {
-        $data = Show::execute($slug);
+        $data = Show::execute($id);
         return $data;
     }
 
-    public function update(Validation $request, $slug)
+    public function update(Validation $request, $id)
     {
-        $data = Update::execute($request, $slug);
+        $data = Update::execute($request, $id);
         return $data;
     }
 

@@ -14,7 +14,7 @@
                 <img
                     :src="`/${
                         product.images?.length
-                            ? (product.images[1]?.url ??'dummy.png')
+                            ? product.images[1]?.url ?? 'dummy.png'
                             : 'dummy.png'
                     }`"
                     alt=""
@@ -99,6 +99,7 @@
 <script>
 import { mapActions, mapState } from "pinia";
 import { common_page_store } from "../../Shared/Store/index";
+
 export default {
     props: {
         product: {

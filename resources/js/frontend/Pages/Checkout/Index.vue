@@ -12,7 +12,7 @@
             </div>
 
             <div class="checkout-area">
-                <div class="returning-customer-area p-20 mb-20">
+                <!-- <div class="returning-customer-area p-20 mb-20">
                     <div class="returning-customer mb-10">
                         <i class="fa fa-book"></i>
                         <span>Returning customer?</span>
@@ -49,7 +49,7 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="coupon-code-area p-20 mb-20">
                     <div class="returning-customer mb-10">
@@ -86,19 +86,32 @@
                             </div>
                             <div class="customer-details-form clear">
                                 <form @submit.prevent="submitHandler">
+                                    <input
+                                        type="hidden"
+                                        name="delivery_charge"
+                                        :value="delivery_charge"
+                                    />
                                     <span class="form-row-first my-2">
                                         <b
                                             >First Name
                                             <span class="required">*</span></b
                                         >
-                                        <input type="text" name="first_name" />
+                                        <input
+                                            type="text"
+                                            name="first_name"
+                                            required
+                                        />
                                     </span>
                                     <span class="form-row-last my-2">
                                         <b
                                             >Last Name
                                             <span class="required">*</span></b
                                         >
-                                        <input type="text" name="last_name" />
+                                        <input
+                                            type="text"
+                                            name="last_name"
+                                            required
+                                        />
                                     </span>
 
                                     <span class="form-row-first my-2">
@@ -106,14 +119,22 @@
                                             >Email Address
                                             <span class="required">*</span></b
                                         >
-                                        <input type="email" name="email" />
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            required
+                                        />
                                     </span>
                                     <span class="form-row-last my-2">
                                         <b
                                             >Phone
                                             <span class="required">*</span></b
                                         >
-                                        <input type="number" name="phone" />
+                                        <input
+                                            type="number"
+                                            name="phone"
+                                            required
+                                        />
                                     </span>
                                     <div class="additional-information my-2">
                                         <b
@@ -126,6 +147,7 @@
                                             cols="20"
                                             rows="5"
                                             placeholder="Street address"
+                                            required
                                         ></textarea>
                                     </div>
 
@@ -137,6 +159,7 @@
                                             cols="30"
                                             rows="20"
                                             placeholder="Notes about your order, e.g. special notes for delivery."
+                                            required
                                         ></textarea>
                                     </div>
                                     <strong class="show-password"
@@ -168,7 +191,7 @@
                                                 ></b
                                             >
                                             <input
-                                            class="mb-2"
+                                                class="mb-2"
                                                 type="password"
                                                 placeholder="password"
                                             />
@@ -217,8 +240,7 @@
                                                 <span
                                                     >{{
                                                         cart.quantity *
-                                                        cart.product
-                                                            ?.customer_sales_price
+                                                        cart.product?.price
                                                     }}
                                                     ৳</span
                                                 >
@@ -290,9 +312,10 @@ export default {
         is_create_account: false,
     }),
     created: async function () {
-        this.delivery_charge = new URLSearchParams(window.location.search).get(
-            "delivery_charge"
-        ) ?? 50;
+        this.delivery_charge =
+            new URLSearchParams(window.location.search).get(
+                "delivery_charge"
+            ) ?? 50;
 
         await this.get_all_cart_data();
     },
@@ -302,7 +325,10 @@ export default {
         }),
         submitHandler: async function ($event) {
             let formData = new FormData($event.target);
-            let response = await axios.post("customer-order", formData);
+            let response = await axios.post(
+                "sales-ecommerce-orders/store",
+                formData
+            );
 
             if (response.data.status === "success") {
                 window.s_alert(response.data.message);

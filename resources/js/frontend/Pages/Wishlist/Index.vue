@@ -50,7 +50,7 @@
                                                 :href="`product-details/${item.slug}`"
                                             >
                                                 <img
-                                                    src="{{ asset('frontend') }}/assets/images/cart/1.jpg"
+                                                   :src="item.product?.images.length ? item.product?.images[0].url : 'dummy.png'"
                                                     alt=""
                                                 />
                                             </Link>
@@ -65,7 +65,7 @@
                                             <span class="amounte"
                                                 >{{
                                                     item.product
-                                                        ?.customer_sales_price
+                                                        ?.price
                                                 }}
                                                 <!-- <del>$350.000</del> -->
                                             </span>
