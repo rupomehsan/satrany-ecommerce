@@ -333,6 +333,7 @@ export default {
             if (response.data.status === "success") {
                 window.s_alert(response.data.message);
                 await this.get_all_cart_data();
+                window.location.href = "/";
             }
         },
     },

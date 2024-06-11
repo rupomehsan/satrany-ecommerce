@@ -136,7 +136,7 @@ select {
     outline: none;
 }
 .pbg {
-    background-image: linear-gradient(to right, rgb(72 5 17), rgb(30 22 84));
+    background-image: linear-gradient(to right, #F40096, #560138);
 }
 .owl-carousel {
     touch-action: manipulation;
@@ -395,11 +395,11 @@ select {
 }
 
 .home3-bg {
-    background: -webkit-linear-gradient(rgb(72 5 17), rgb(185 92 92 / 95%));
+    background-image: linear-gradient(to right, #F40096, #560138);
 }
 
 .home3-bg2 {
-    background: -webkit-linear-gradient(rgb(30 22 84), #1077d126);
+    background-image: linear-gradient(to right, #F40096, #560138);
 }
 
 .bg-fff {
@@ -2110,7 +2110,7 @@ a#scrollUp:hover {
 }
 
 .home3-top-cart.top-cart {
-    background: -webkit-linear-gradient(rgb(30 22 84), #1077d126);
+    background-image: linear-gradient(to right, #F40096, #560138);
     padding: 15px 10px;
 }
 

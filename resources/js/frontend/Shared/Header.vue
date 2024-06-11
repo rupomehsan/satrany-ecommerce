@@ -5,7 +5,7 @@
             <div class="container-fluid">
                 <div class="row justify-content-between">
                     <div class="col-lg-6">
-                        <p class="h2-color text-center">
+                        <p class="h2-color text-center text-white">
                             Wellcome to Satrany store!
                         </p>
                     </div>
@@ -18,24 +18,24 @@
                   </li> -->
 
                                     <li>
-                                        <Link href="cart" class="text-white"
+                                        <Link href="/cart" class="text-white"
                                             >Shopping Cart</Link
                                         >
                                     </li>
                                     <li>
-                                        <Link href="wishlist" class="text-white"
+                                        <Link href="/wishlist" class="text-white"
                                             >Wishlist</Link
                                         >
                                     </li>
                                     <li>
                                         <Link
-                                            href="compare-list"
+                                            href="/compare-list"
                                             class="text-white"
                                             >Compare list</Link
                                         >
                                     </li>
                                     <li>
-                                        <Link href="login" class="text-white"
+                                        <Link href="/login" class="text-white"
                                             >Login</Link
                                         >
                                     </li>
@@ -86,7 +86,7 @@
                                                 'active-link':
                                                     $page.url === '/about-us',
                                             }"
-                                            href="about-us"
+                                            href="/about-us"
                                             >About Us</Link
                                         >
                                     </li>
@@ -97,7 +97,7 @@
                                                     $page.url ===
                                                     '/terms-and-conditions',
                                             }"
-                                            href="terms-and-conditions"
+                                            href="/terms-and-conditions"
                                             >Terms & Conditions</Link
                                         >
                                     </li>
@@ -108,7 +108,7 @@
                                                     $page.url ===
                                                     '/return-and-refund',
                                             }"
-                                            href="return-and-refund"
+                                            href="/return-and-refund"
                                             >Return & Refund</Link
                                         >
                                     </li>
@@ -118,7 +118,7 @@
                                                 'active-link':
                                                     $page.url === '/contact-us',
                                             }"
-                                            href="contact-us"
+                                            href="/contact-us"
                                             >Contact us</Link
                                         >
                                     </li>
@@ -132,99 +132,77 @@
                             <div class="top-cart home3-bg">
                                 <div class="cart">
                                     <i class="icofont icofont-bag"></i>
-                                    <a href="#">
-                                        3 Items - <strong>$500.00 </strong>
+                                    <a href="#" class="mx-2">
+                                        {{ all_cart_data.length }} Items -
+                                        <strong class="mx-2"
+                                            >{{ total_cart_price }} ৳</strong
+                                        >
                                         <i
                                             class="icofont icofont-rounded-down"
                                         ></i>
                                     </a>
                                 </div>
-                                <ul>
+                                <ul class="px-3">
                                     <li>
                                         <div class="cart-items">
-                                            <div class="cart-item bb mt-10">
+                                            <div
+                                                class="cart-item bb mt-10"
+                                                v-for="cart in all_cart_data"
+                                            >
                                                 <div class="cart-img">
                                                     <a href="#">
                                                         <img
-                                                            src="frontend/assets/images/cart/1.jpg"
+                                                            :src="
+                                                                cart.product
+                                                                    ?.images
+                                                                    .length
+                                                                    ? cart
+                                                                          .product
+                                                                          ?.images[0]
+                                                                          .url
+                                                                    : 'dummy.png'
+                                                            "
                                                             alt=""
                                                         />
                                                     </a>
                                                 </div>
                                                 <div class="cart-content">
-                                                    <a href="#"
-                                                        >Lorem nec augue</a
+                                                    <a
+                                                        :href="`product-details/${cart.product?.slug}`"
+                                                        >{{
+                                                            cart.product?.title
+                                                        }}</a
                                                     >
                                                     <a
-                                                        href="#"
+                                                        @click="
+                                                            removeFromCart(
+                                                                cart.id
+                                                            )
+                                                        "
                                                         class="pull-right cart-remove"
+                                                        role="button"
                                                     >
                                                         <i
                                                             class="fa fa-times"
                                                         ></i>
                                                     </a>
-                                                    <span>1 x $220.00</span>
+                                                    <span
+                                                        >{{ cart.quantity }} x
+                                                        {{
+                                                            cart.product?.price
+                                                        }}
+                                                        =
+                                                        {{
+                                                            cart.quantity *
+                                                            cart.product?.price
+                                                        }}
+                                                        ৳</span
+                                                    >
                                                 </div>
                                             </div>
-                                            <div class="cart-item bb mt-10">
-                                                <div class="cart-img">
-                                                    <a href="#">
-                                                        <img
-                                                            src="frontend/assets/images/cart/2.jpg"
-                                                            alt=""
-                                                        />
-                                                    </a>
-                                                </div>
-                                                <div class="cart-content">
-                                                    <a href="#"
-                                                        >Lorem nec augue</a
-                                                    >
-                                                    <a
-                                                        href="#"
-                                                        class="pull-right cart-remove"
-                                                    >
-                                                        <i
-                                                            class="fa fa-times"
-                                                        ></i>
-                                                    </a>
-                                                    <span>1 x $220.00</span>
-                                                </div>
-                                            </div>
-                                            <div class="cart-item bb mt-10">
-                                                <div class="cart-img">
-                                                    <a href="#">
-                                                        <img
-                                                            src="frontend/assets/images/cart/3.jpg"
-                                                            alt=""
-                                                        />
-                                                    </a>
-                                                </div>
-                                                <div class="cart-content">
-                                                    <a href="#"
-                                                        >Lorem nec augue</a
-                                                    >
-                                                    <a
-                                                        href="#"
-                                                        class="pull-right cart-remove"
-                                                    >
-                                                        <i
-                                                            class="fa fa-times"
-                                                        ></i>
-                                                    </a>
-                                                    <span>1 x $220.00</span>
-                                                </div>
-                                            </div>
-                                            <div class="total mt-10">
-                                                <span class="pull-left"
-                                                    >Subtotal:</span
-                                                >
-                                                <span class="pull-right"
-                                                    >$200.00</span
-                                                >
-                                            </div>
-                                            <div class="cart-btn mb-20">
-                                                <a href="#">view cart</a>
-                                                <a href="#">Checkout</a>
+                                            <div class="cart-btn my-3 mx-auto">
+                                                <a href="cart">view cart</a>
+                                                <a href="checkout">Checkout</a>
                                             </div>
                                         </div>
                                     </li>
@@ -273,12 +251,12 @@
                                             {{ category.title }}
                                         </a>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <a href="#">
                                             <i class="fa fa-plus-square-o"></i>
                                             More Categories
                                         </a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -317,7 +295,14 @@
                                             <div class="cart-img">
                                                 <a href="#">
                                                     <img
-                                                        :src="cart.product?.images.length ? cart.product?.images[0].url : 'dummy.png'"
+                                                        :src="
+                                                            cart.product?.images
+                                                                .length
+                                                                ? cart.product
+                                                                      ?.images[0]
+                                                                      .url
+                                                                : 'dummy.png'
+                                                        "
                                                         alt=""
                                                     />
                                                 </a>

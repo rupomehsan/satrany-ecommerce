@@ -18,16 +18,10 @@
                                             <a
                                                 class="popup"
                                                 target="_blank"
-                                                :href="`/${productDetails.images?.length ? productDetails.images[0].url: 'dummy.png'}`"
+                                                :href="`/${prodictDetailsImages}`"
                                             >
                                                 <img
-                                                    :src="`/${
-                                                        productDetails.images
-                                                            .length
-                                                            ? productDetails
-                                                                  .images[0].url
-                                                            : 'dummy.png'
-                                                    }`"
+                                                    :src="`/${prodictDetailsImages}`"
                                                     alt=""
                                                     style="width: 100%"
                                                 />
@@ -49,9 +43,12 @@
                                                 :key="productDetails.images"
                                             >
                                                 <a
-                                                    :href="`#${index}`"
+                                                    :href="`/${image.url}`"
                                                     data-bs-toggle="tab"
                                                     class="mx-1"
+                                                    @click="
+                                                        changeImage(image.url)
+                                                    "
                                                 >
                                                     <img
                                                         :src="`/${image.url}`"
@@ -536,7 +533,11 @@ export default {
         return {
             productDetails: this.productDetailsData,
             quantity: 1,
+            prodictDetailsImages: this.productDetailsData.images[0].url,
         };
+    },
+    created() {
+        console.log("ss", this.prodictDetailsImages);
     },
 
     methods: {
@@ -578,6 +579,9 @@ export default {
             if (response.data.status === "warning") {
                 window.w_alert(response.data.message);
             }
+        },
+        changeImage: function (image) {
+            this.prodictDetailsImages = image;
         },
     },
 };

@@ -15,13 +15,17 @@
         <div class="offcanvas-body">
             <div class="account-menu">
                 <ul>
-                    <li><Link href="account.html">My Account</Link></li>
                     <li>
-                        <Link href="cart.html">compare <span>(0)</span></Link>
+                        <Link href="cart" class="text-white"
+                            >Shopping Cart</Link
+                        >
                     </li>
                     <li>
-                        <Link href="wishlist.html"
-                            >Wishlist <span>(0)</span></Link
+                        <Link href="wishlist" class="text-white">Wishlist</Link>
+                    </li>
+                    <li>
+                        <Link href="compare-list" class="text-white"
+                            >Compare list</Link
                         >
                     </li>
                 </ul>
@@ -30,260 +34,53 @@
             <div class="mobail-menu">
                 <nav class="offcanvas-menu">
                     <ul>
-                        <li class="active">
-                            <Link href="index.html">Home</Link>
-                            <ul class="sub-menu">
-                                <li>
-                                    <Link href="index.html">Home shop 1</Link>
-                                </li>
-                                <li>
-                                    <Link href="index-2.html">Home shop 2</Link>
-                                </li>
-                                <li>
-                                    <Link href="index-3.html">Home shop 3</Link>
-                                </li>
-                            </ul>
+                        <li>
+                            <Link
+                                href="/"
+                                :class="{
+                                    'active-link': $page.url === '/',
+                                }"
+                                >Home
+                            </Link>
                         </li>
                         <li>
-                            <Link href="shop.html">Shop</Link>
-                            <ul class="sub-menu">
-                                <li>
-                                    <Link class="mega-title" href="#"
-                                        >Shop Layout</Link
-                                    >
-                                    <ul>
-                                        <li>
-                                            <Link href="shop-full-width.html"
-                                                >Full Width</Link
-                                            >
-                                        </li>
-                                        <li>
-                                            <Link href="shop-sitebar-right.html"
-                                                >Sidebar Right</Link
-                                            >
-                                        </li>
-                                        <li>
-                                            <Link href="shop-sitebar-left.html"
-                                                >Sidebar Left</Link
-                                            >
-                                        </li>
-                                        <li>
-                                            <Link href="Shop-list-view.html"
-                                                >List View</Link
-                                            >
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <Link class="mega-title" href="#"
-                                        >Shop Pages</Link
-                                    >
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <Link href="account.html"
-                                                >My account</Link
-                                            >
-                                        </li>
-                                        <li>
-                                            <Link href="cart.html"
-                                                >Shoping cart</Link
-                                            >
-                                        </li>
-                                        <li>
-                                            <Link href="checkout.html"
-                                                >checkout</Link
-                                            >
-                                        </li>
-                                        <li>
-                                            <Link href="wishlist.html"
-                                                >wishlist</Link
-                                            >
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <Link class="mega-title" href="#"
-                                        >Product type</Link
-                                    >
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <Link
-                                                href="shop-simple-product.html"
-                                                >simple product</Link
-                                            >
-                                        </li>
-                                        <li>
-                                            <Link
-                                                href="shop-variable-Product.html"
-                                                >Variable Product</Link
-                                            >
-                                        </li>
-                                        <li>
-                                            <Link
-                                                href="shop-grouped-Product.html"
-                                                >Grouped Product</Link
-                                            >
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            <Link
+                                :class="{
+                                    'active-link': $page.url === '/about-us',
+                                }"
+                                href="about-us"
+                                >About Us</Link
+                            >
                         </li>
                         <li>
-                            <Link href="blog.html">blog</Link>
-                            <ul class="sub-menu">
-                                <li>
-                                    <Link href="product-details/slug"
-                                        >Blog Layouts 1</Link
-                                    >
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <Link
-                                                href="blog-left-sitebar-list.html"
-                                                >left sitebar list</Link
-                                            >
-                                        </li>
-                                        <li>
-                                            <Link
-                                                href="blog-left-sitebar-1.html"
-                                                >left sitebar grid 1</Link
-                                            >
-                                        </li>
-                                        <li>
-                                            <Link
-                                                href="blog-left-sitebar-2.html"
-                                                >left sitebar grid 2</Link
-                                            >
-                                        </li>
-                                        <li>
-                                            <Link
-                                                href="blog-left-sitebar-3.html"
-                                                >left sitebar grid 3</Link
-                                            >
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <Link href="product-details/slug"
-                                        >Blog Layouts 2</Link
-                                    >
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <Link
-                                                href="blog-right-sitebar-list.html"
-                                                >right sitebar list</Link
-                                            >
-                                        </li>
-                                        <li>
-                                            <Link
-                                                href="blog-right-sitebar-list-1.html"
-                                                >right sitebar list 1</Link
-                                            >
-                                        </li>
-                                        <li>
-                                            <Link
-                                                href="blog-right-sitebar-list-2.html"
-                                                >right sitebar list 2</Link
-                                            >
-                                        </li>
-                                        <li>
-                                            <Link
-                                                href="blog-right-sitebar-list-3.html"
-                                                >right sitebar list 3</Link
-                                            >
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <Link href="product-details/slug"
-                                        >Blog Layouts 3</Link
-                                    >
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <Link href="blog-1-col.html"
-                                                >grid 1 columns</Link
-                                            >
-                                        </li>
-                                        <li>
-                                            <Link href="blog-2-col.html"
-                                                >grid 2 columns</Link
-                                            >
-                                        </li>
-                                        <li>
-                                            <Link href="blog-3-col.html"
-                                                >grid 3 columns</Link
-                                            >
-                                        </li>
-                                        <li>
-                                            <Link href="blog-4-col.html"
-                                                >grid 4 columns</Link
-                                            >
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <Link href="product-details/slug"
-                                        >Blog Layouts 4</Link
-                                    >
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <Link href="blog-details-1.html"
-                                                >format:images</Link
-                                            >
-                                        </li>
-                                        <li>
-                                            <Link
-                                                href="blog-details-gallery.html"
-                                                >format:gallery</Link
-                                            >
-                                        </li>
-                                        <li>
-                                            <Link href="blog-details-vedio.html"
-                                                >format:video</Link
-                                            >
-                                        </li>
-                                        <li>
-                                            <Link href="blog-details-2.html"
-                                                >format:audio</Link
-                                            >
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            <Link
+                                :class="{
+                                    'active-link':
+                                        $page.url === '/terms-and-conditions',
+                                }"
+                                href="terms-and-conditions"
+                                >Terms & Conditions</Link
+                            >
                         </li>
                         <li>
-                            <Link href="product-details/slug">pages</Link>
-                            <ul class="sub-menu">
-                                <li><Link href="about.html">about us</Link></li>
-                                <li><Link href="faq.html">F.A.Q.s</Link></li>
-                                <li><Link href="404.html">404 pages</Link></li>
-                            </ul>
+                            <Link
+                                :class="{
+                                    'active-link':
+                                        $page.url === '/return-and-refund',
+                                }"
+                                href="return-and-refund"
+                                >Return & Refund</Link
+                            >
                         </li>
                         <li>
-                            <Link href="protfolio.html">Protfolio</Link>
-                            <ul class="sub-menu">
-                                <li>
-                                    <Link href="protfolio-details-1.html"
-                                        >single project</Link
-                                    >
-                                </li>
-                                <li>
-                                    <Link href="protfolio-2-col.html"
-                                        >two columns</Link
-                                    >
-                                </li>
-                                <li>
-                                    <Link href="protfolio-3-col.html"
-                                        >three columns</Link
-                                    >
-                                </li>
-                                <li>
-                                    <Link href="protfolio.html"
-                                        >four columns</Link
-                                    >
-                                </li>
-                            </ul>
+                            <Link
+                                :class="{
+                                    'active-link': $page.url === '/contact-us',
+                                }"
+                                href="contact-us"
+                                >Contact us</Link
+                            >
                         </li>
-                        <li><Link href="contact.html">contact us</Link></li>
                     </ul>
                 </nav>
             </div>
@@ -325,7 +122,9 @@
                                         :href="`products?category=${category.slug}`"
                                     >
                                         <img
-                                            :src="`/${category.image ?? 'dummy.png'}`"
+                                            :src="`/${
+                                                category.image ?? 'dummy.png'
+                                            }`"
                                             alt=""
                                         />
                                     </Link>
@@ -385,7 +184,6 @@
                     </div>
                 </div>
                 <div class="col-lg-3">
-
                     <!-- featured-area start -->
                     <div class="featured-area box-shadow bg-fff">
                         <div class="product-title home3-bg text-uppercase">

@@ -1,5 +1,5 @@
 <template>
-      <div class="container">
+    <div class="container">
         <div class="woocommerce-breadcrumb mtb-15">
             <div class="menu">
                 <ul>
@@ -18,7 +18,7 @@
                             <div class="col-lg-4 col-md-4">
                                 <div class="shop-tab-menu">
                                     <ul class="nav" role="tablist">
-                                        <li>
+                                        <!-- <li>
                                             <a
                                                 class="active"
                                                 href="#tab1"
@@ -27,8 +27,8 @@
                                                 role="tab"
                                                 ><i class="fa fa-th-list"></i
                                             ></a>
-                                        </li>
-                                        <li>
+                                        </li> -->
+                                        <!-- <li>
                                             <a
                                                 href="#tab2"
                                                 data-bs-toggle="tab"
@@ -37,13 +37,16 @@
                                                 role="tab"
                                                 ><i class="fa fa-th-list"></i
                                             ></a>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4">
                                 <div class="shop-pra text-center">
-                                    <p>Showing 1-16 of 21 results</p>
+                                    <p>
+                                        Showing
+                                        {{ all_products.data.length }} results
+                                    </p>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4">
@@ -84,962 +87,20 @@
                             <div class="row">
                                 <div
                                     class="col-xl-3 col-lg-4 col-md-4 col-sm-6"
+                                    v-for="product in all_products.data"
                                 >
-                                    <div class="product-wrapper bg-fff mb-30">
-                                        <div class="product-img">
-                                            <a href="#">
-                                                <img
-                                                    src="frontend/img/product/1.jpg"
-                                                    alt=""
-                                                    class="primary"
-                                                />
-                                                <img
-                                                    src="frontend/img/product/2.jpg"
-                                                    alt=""
-                                                    class="secondary"
-                                                />
-                                            </a>
-                                            <div
-                                                class="product-icon c-fff hover-bg"
-                                            >
-                                                <ul>
-                                                    <li>
-                                                        <a
-                                                            href="#"
-                                                            data-bs-toggle="tooltip"
-                                                            aria-label="Add to cart"
-                                                            data-bs-original-title="Add to cart"
-                                                            ><i
-                                                                class="fa fa-shopping-cart"
-                                                            ></i
-                                                        ></a>
-                                                    </li>
-                                                    <li>
-                                                        <a
-                                                            href="#"
-                                                            data-bs-toggle="tooltip"
-                                                            aria-label="Wishlist"
-                                                            data-bs-original-title="Wishlist"
-                                                            ><i
-                                                                class="fa fa-heart-o"
-                                                            ></i
-                                                        ></a>
-                                                    </li>
-                                                    <li>
-                                                        <a
-                                                            href="#"
-                                                            data-bs-toggle="tooltip"
-                                                            aria-label="Compare"
-                                                            data-bs-original-title="Compare"
-                                                            ><i
-                                                                class="fa fa-comments"
-                                                            ></i
-                                                        ></a>
-                                                    </li>
-                                                    <li>
-                                                        <a
-                                                            href="#"
-                                                            data-bs-toggle="tooltip"
-                                                            aria-label="Accumsan eli"
-                                                            data-bs-original-title="Accumsan eli"
-                                                            ><i
-                                                                class="fa fa-search"
-                                                            ></i
-                                                        ></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <span class="sale">Sale</span>
-                                        </div>
-                                        <div class="product-content">
-                                            <h3>
-                                                <a href="#">Accumsan eli</a>
-                                            </h3>
-                                            <ul>
-                                                <li>
-                                                    <i class="fa fa-star"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-star"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-star"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-star"></i>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-star"></i>
-                                                </li>
-                                            </ul>
-                                            <span>&amp;300.00</span>
-                                        </div>
-                                    </div>
+                                    <product-grid
+                                        :product="product"
+                                    ></product-grid>
                                 </div>
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="tab2">
-                            <div
-                                class="product-wrapper bg-fff mb-30 ptb-20 box-shadow"
-                            >
-                                <div class="product-img shop-product-img">
-                                    <a href="#">
-                                        <img src="frontend/img/product/1.jpg" alt="" class="primary" />
-                                        <img src="frontend/img/product/2.jpg" alt="" class="secondary" />
-                                    </a>
-                                </div>
-                                <div
-                                    class="product-content shop-product-content"
-                                >
-                                    <h3><a href="#">Accumsan eli</a></h3>
-                                    <span>&amp;300.00</span>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                    <p>
-                                        On the other hand, we denounce with
-                                        righteous indignation and dislike men
-                                        who are so beguiled and demoralized by
-                                        the charms of pleasure of the moment, so
-                                        blinded by desire, that they cannot
-                                        foresee the pain and trouble that are
-                                        bound to ensue; and equal blame belongs
-                                    </p>
-                                    <div
-                                        class="shop-product-icon c-fff hover-bg"
-                                    >
-                                        <ul>
-                                            <li class="active">
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    data-bs-original-title="Add to cart"
-                                                    >Add to cart</a
-                                                >
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Wishlist"
-                                                    data-bs-original-title="Wishlist"
-                                                    ><i
-                                                        class="fa fa-heart-o"
-                                                    ></i
-                                                ></a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Compare"
-                                                    data-bs-original-title="Compare"
-                                                    ><i
-                                                        class="fa fa-comments"
-                                                    ></i
-                                                ></a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Accumsan eli"
-                                                    data-bs-original-title="Accumsan eli"
-                                                    ><i class="fa fa-search"></i
-                                                ></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div
-                                class="product-wrapper bg-fff mb-30 ptb-20 box-shadow"
-                            >
-                                <div class="product-img shop-product-img">
-                                    <a href="#">
-                                        <img src="" alt="" class="primary" />
-                                        <img src="" alt="" class="secondary" />
-                                    </a>
-                                </div>
-                                <div
-                                    class="product-content shop-product-content"
-                                >
-                                    <h3>
-                                        <a href="#">Adipiscing cursus eu</a>
-                                    </h3>
-                                    <span>&amp;300.00</span>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                    <p>
-                                        On the other hand, we denounce with
-                                        righteous indignation and dislike men
-                                        who are so beguiled and demoralized by
-                                        the charms of pleasure of the moment, so
-                                        blinded by desire, that they cannot
-                                        foresee the pain and trouble that are
-                                        bound to ensue; and equal blame belongs
-                                    </p>
-                                    <div
-                                        class="shop-product-icon c-fff hover-bg"
-                                    >
-                                        <ul>
-                                            <li class="active">
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    data-bs-original-title="Add to cart"
-                                                    >Add to cart</a
-                                                >
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Wishlist"
-                                                    data-bs-original-title="Wishlist"
-                                                    ><i
-                                                        class="fa fa-heart-o"
-                                                    ></i
-                                                ></a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Compare"
-                                                    data-bs-original-title="Compare"
-                                                    ><i
-                                                        class="fa fa-comments"
-                                                    ></i
-                                                ></a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Accumsan eli"
-                                                    data-bs-original-title="Accumsan eli"
-                                                    ><i class="fa fa-search"></i
-                                                ></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div
-                                class="product-wrapper bg-fff mb-30 ptb-20 box-shadow"
-                            >
-                                <div class="product-img shop-product-img">
-                                    <a href="#">
-                                        <img src="g" alt="" class="primary" />
-                                        <img src="g" alt="" class="secondary" />
-                                    </a>
-                                </div>
-                                <div
-                                    class="product-content shop-product-content"
-                                >
-                                    <h3><a href="#">Commodo augue</a></h3>
-                                    <span>&amp;300.00</span>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                    <p>
-                                        On the other hand, we denounce with
-                                        righteous indignation and dislike men
-                                        who are so beguiled and demoralized by
-                                        the charms of pleasure of the moment, so
-                                        blinded by desire, that they cannot
-                                        foresee the pain and trouble that are
-                                        bound to ensue; and equal blame belongs
-                                    </p>
-                                    <div
-                                        class="shop-product-icon c-fff hover-bg"
-                                    >
-                                        <ul>
-                                            <li class="active">
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    data-bs-original-title="Add to cart"
-                                                    >Add to cart</a
-                                                >
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Wishlist"
-                                                    data-bs-original-title="Wishlist"
-                                                    ><i
-                                                        class="fa fa-heart-o"
-                                                    ></i
-                                                ></a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Compare"
-                                                    data-bs-original-title="Compare"
-                                                    ><i
-                                                        class="fa fa-comments"
-                                                    ></i
-                                                ></a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Accumsan eli"
-                                                    data-bs-original-title="Accumsan eli"
-                                                    ><i class="fa fa-search"></i
-                                                ></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div
-                                class="product-wrapper bg-fff mb-30 ptb-20 box-shadow"
-                            >
-                                <div class="product-img shop-product-img">
-                                    <a href="#">
-                                        <img src="g" alt="" class="primary" />
-                                        <img src="" alt="" class="secondary" />
-                                    </a>
-                                </div>
-                                <div
-                                    class="product-content shop-product-content"
-                                >
-                                    <h3>
-                                        <a href="#">Cras nec nisl ut erat</a>
-                                    </h3>
-                                    <span>&amp;300.00</span>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                    <p>
-                                        On the other hand, we denounce with
-                                        righteous indignation and dislike men
-                                        who are so beguiled and demoralized by
-                                        the charms of pleasure of the moment, so
-                                        blinded by desire, that they cannot
-                                        foresee the pain and trouble that are
-                                        bound to ensue; and equal blame belongs
-                                    </p>
-                                    <div
-                                        class="shop-product-icon c-fff hover-bg"
-                                    >
-                                        <ul>
-                                            <li class="active">
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    data-bs-original-title="Add to cart"
-                                                    >Add to cart</a
-                                                >
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Wishlist"
-                                                    data-bs-original-title="Wishlist"
-                                                    ><i
-                                                        class="fa fa-heart-o"
-                                                    ></i
-                                                ></a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Compare"
-                                                    data-bs-original-title="Compare"
-                                                    ><i
-                                                        class="fa fa-comments"
-                                                    ></i
-                                                ></a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Accumsan eli"
-                                                    data-bs-original-title="Accumsan eli"
-                                                    ><i class="fa fa-search"></i
-                                                ></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div
-                                class="product-wrapper bg-fff mb-30 ptb-20 box-shadow"
-                            >
-                                <div class="product-img shop-product-img">
-                                    <a href="#">
-                                        <img src="g" alt="" class="primary" />
-                                        <img src="" alt="" class="secondary" />
-                                    </a>
-                                </div>
-                                <div
-                                    class="product-content shop-product-content"
-                                >
-                                    <h3><a href="#">Cras neque</a></h3>
-                                    <span>&amp;300.00</span>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                    <p>
-                                        On the other hand, we denounce with
-                                        righteous indignation and dislike men
-                                        who are so beguiled and demoralized by
-                                        the charms of pleasure of the moment, so
-                                        blinded by desire, that they cannot
-                                        foresee the pain and trouble that are
-                                        bound to ensue; and equal blame belongs
-                                    </p>
-                                    <div
-                                        class="shop-product-icon c-fff hover-bg"
-                                    >
-                                        <ul>
-                                            <li class="active">
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    data-bs-original-title="Add to cart"
-                                                    >Add to cart</a
-                                                >
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Wishlist"
-                                                    data-bs-original-title="Wishlist"
-                                                    ><i
-                                                        class="fa fa-heart-o"
-                                                    ></i
-                                                ></a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Compare"
-                                                    data-bs-original-title="Compare"
-                                                    ><i
-                                                        class="fa fa-comments"
-                                                    ></i
-                                                ></a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Accumsan eli"
-                                                    data-bs-original-title="Accumsan eli"
-                                                    ><i class="fa fa-search"></i
-                                                ></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div
-                                class="product-wrapper bg-fff mb-30 ptb-20 box-shadow"
-                            >
-                                <div class="product-img shop-product-img">
-                                    <a href="#">
-                                        <img src="g" alt="" class="primary" />
-                                        <img src="g" alt="" class="secondary" />
-                                    </a>
-                                </div>
-                                <div
-                                    class="product-content shop-product-content"
-                                >
-                                    <h3><a href="#">Donec a neque</a></h3>
-                                    <span>&amp;300.00</span>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                    <p>
-                                        On the other hand, we denounce with
-                                        righteous indignation and dislike men
-                                        who are so beguiled and demoralized by
-                                        the charms of pleasure of the moment, so
-                                        blinded by desire, that they cannot
-                                        foresee the pain and trouble that are
-                                        bound to ensue; and equal blame belongs
-                                    </p>
-                                    <div
-                                        class="shop-product-icon c-fff hover-bg"
-                                    >
-                                        <ul>
-                                            <li class="active">
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    data-bs-original-title="Add to cart"
-                                                    >Add to cart</a
-                                                >
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Wishlist"
-                                                    data-bs-original-title="Wishlist"
-                                                    ><i
-                                                        class="fa fa-heart-o"
-                                                    ></i
-                                                ></a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Compare"
-                                                    data-bs-original-title="Compare"
-                                                    ><i
-                                                        class="fa fa-comments"
-                                                    ></i
-                                                ></a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Accumsan eli"
-                                                    data-bs-original-title="Accumsan eli"
-                                                    ><i class="fa fa-search"></i
-                                                ></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div
-                                class="product-wrapper bg-fff mb-30 ptb-20 box-shadow"
-                            >
-                                <div class="product-img shop-product-img">
-                                    <a href="#">
-                                        <img src="g" alt="" class="primary" />
-                                        <img src="g" alt="" class="secondary" />
-                                    </a>
-                                </div>
-                                <div
-                                    class="product-content shop-product-content"
-                                >
-                                    <h3><a href="#">Donec non est at</a></h3>
-                                    <span>&amp;300.00</span>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                    <p>
-                                        On the other hand, we denounce with
-                                        righteous indignation and dislike men
-                                        who are so beguiled and demoralized by
-                                        the charms of pleasure of the moment, so
-                                        blinded by desire, that they cannot
-                                        foresee the pain and trouble that are
-                                        bound to ensue; and equal blame belongs
-                                    </p>
-                                    <div
-                                        class="shop-product-icon c-fff hover-bg"
-                                    >
-                                        <ul>
-                                            <li class="active">
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    data-bs-original-title="Add to cart"
-                                                    >Add to cart</a
-                                                >
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Wishlist"
-                                                    data-bs-original-title="Wishlist"
-                                                    ><i
-                                                        class="fa fa-heart-o"
-                                                    ></i
-                                                ></a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Compare"
-                                                    data-bs-original-title="Compare"
-                                                    ><i
-                                                        class="fa fa-comments"
-                                                    ></i
-                                                ></a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Accumsan eli"
-                                                    data-bs-original-title="Accumsan eli"
-                                                    ><i class="fa fa-search"></i
-                                                ></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div
-                                class="product-wrapper bg-fff mb-30 ptb-20 box-shadow"
-                            >
-                                <div class="product-img shop-product-img">
-                                    <a href="#">
-                                        <img src="g" alt="" class="primary" />
-                                        <img src="" alt="" class="secondary" />
-                                    </a>
-                                </div>
-                                <div
-                                    class="product-content shop-product-content"
-                                >
-                                    <h3><a href="#">Duis convallis</a></h3>
-                                    <span>&amp;300.00</span>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                    <p>
-                                        On the other hand, we denounce with
-                                        righteous indignation and dislike men
-                                        who are so beguiled and demoralized by
-                                        the charms of pleasure of the moment, so
-                                        blinded by desire, that they cannot
-                                        foresee the pain and trouble that are
-                                        bound to ensue; and equal blame belongs
-                                    </p>
-                                    <div
-                                        class="shop-product-icon c-fff hover-bg"
-                                    >
-                                        <ul>
-                                            <li class="active">
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    data-bs-original-title="Add to cart"
-                                                    >Add to cart</a
-                                                >
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Wishlist"
-                                                    data-bs-original-title="Wishlist"
-                                                    ><i
-                                                        class="fa fa-heart-o"
-                                                    ></i
-                                                ></a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Compare"
-                                                    data-bs-original-title="Compare"
-                                                    ><i
-                                                        class="fa fa-comments"
-                                                    ></i
-                                                ></a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Accumsan eli"
-                                                    data-bs-original-title="Accumsan eli"
-                                                    ><i class="fa fa-search"></i
-                                                ></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div
-                                class="product-wrapper bg-fff mb-30 ptb-20 box-shadow"
-                            >
-                                <div class="product-img shop-product-img">
-                                    <a href="#">
-                                        <img src="g" alt="" class="primary" />
-                                        <img src="" alt="" class="secondary" />
-                                    </a>
-                                </div>
-                                <div
-                                    class="product-content shop-product-content"
-                                >
-                                    <h3><a href="#">Etiam gravida</a></h3>
-                                    <span>&amp;300.00</span>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                    <p>
-                                        On the other hand, we denounce with
-                                        righteous indignation and dislike men
-                                        who are so beguiled and demoralized by
-                                        the charms of pleasure of the moment, so
-                                        blinded by desire, that they cannot
-                                        foresee the pain and trouble that are
-                                        bound to ensue; and equal blame belongs
-                                    </p>
-                                    <div
-                                        class="shop-product-icon c-fff hover-bg"
-                                    >
-                                        <ul>
-                                            <li class="active">
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    data-bs-original-title="Add to cart"
-                                                    >Add to cart</a
-                                                >
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Wishlist"
-                                                    data-bs-original-title="Wishlist"
-                                                    ><i
-                                                        class="fa fa-heart-o"
-                                                    ></i
-                                                ></a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Compare"
-                                                    data-bs-original-title="Compare"
-                                                    ><i
-                                                        class="fa fa-comments"
-                                                    ></i
-                                                ></a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Accumsan eli"
-                                                    data-bs-original-title="Accumsan eli"
-                                                    ><i class="fa fa-search"></i
-                                                ></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div
-                                class="product-wrapper bg-fff mb-30 ptb-20 box-shadow"
-                            >
-                                <div class="product-img shop-product-img">
-                                    <a href="#">
-                                        <img src="g" alt="" class="primary" />
-                                        <img src="" alt="" class="secondary" />
-                                    </a>
-                                </div>
-                                <div
-                                    class="product-content shop-product-content"
-                                >
-                                    <h3><a href="#">Ligula euismod eget</a></h3>
-                                    <span>&amp;300.00</span>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                    <p>
-                                        On the other hand, we denounce with
-                                        righteous indignation and dislike men
-                                        who are so beguiled and demoralized by
-                                        the charms of pleasure of the moment, so
-                                        blinded by desire, that they cannot
-                                        foresee the pain and trouble that are
-                                        bound to ensue; and equal blame belongs
-                                    </p>
-                                    <div
-                                        class="shop-product-icon c-fff hover-bg"
-                                    >
-                                        <ul>
-                                            <li class="active">
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    data-bs-original-title="Add to cart"
-                                                    >Add to cart</a
-                                                >
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Wishlist"
-                                                    data-bs-original-title="Wishlist"
-                                                    ><i
-                                                        class="fa fa-heart-o"
-                                                    ></i
-                                                ></a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Compare"
-                                                    data-bs-original-title="Compare"
-                                                    ><i
-                                                        class="fa fa-comments"
-                                                    ></i
-                                                ></a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Accumsan eli"
-                                                    data-bs-original-title="Accumsan eli"
-                                                    ><i class="fa fa-search"></i
-                                                ></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div
-                                class="product-wrapper bg-fff mb-30 ptb-20 box-shadow"
-                            >
-                                <div class="product-img shop-product-img">
-                                    <a href="#">
-                                        <img src="g" alt="" class="primary" />
-                                        <img src="" alt="" class="secondary" />
-                                    </a>
-                                </div>
-                                <div
-                                    class="product-content shop-product-content"
-                                >
-                                    <h3><a href="#">Lorem nec augue</a></h3>
-                                    <span>&amp;300.00</span>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                    <p>
-                                        On the other hand, we denounce with
-                                        righteous indignation and dislike men
-                                        who are so beguiled and demoralized by
-                                        the charms of pleasure of the moment, so
-                                        blinded by desire, that they cannot
-                                        foresee the pain and trouble that are
-                                        bound to ensue; and equal blame belongs
-                                    </p>
-                                    <div
-                                        class="shop-product-icon c-fff hover-bg"
-                                    >
-                                        <ul>
-                                            <li class="active">
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    data-bs-original-title="Add to cart"
-                                                    >Add to cart</a
-                                                >
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Wishlist"
-                                                    data-bs-original-title="Wishlist"
-                                                    ><i
-                                                        class="fa fa-heart-o"
-                                                    ></i
-                                                ></a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Compare"
-                                                    data-bs-original-title="Compare"
-                                                    ><i
-                                                        class="fa fa-comments"
-                                                    ></i
-                                                ></a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="#"
-                                                    data-bs-toggle="tooltip"
-                                                    aria-label="Accumsan eli"
-                                                    data-bs-original-title="Accumsan eli"
-                                                    ><i class="fa fa-search"></i
-                                                ></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            <template v-for="product in all_products.data">
+                                <product-grid-flex
+                                    :product="product"
+                                ></product-grid-flex>
+                            </template>
                         </div>
                         <!-- woocommerce-pagination-area -->
 
@@ -1074,61 +135,11 @@
                     </div>
                     <div class="shop-categories-menu p-20">
                         <ul>
-                            <li>
-                                <a href="#">Accessories</a><span> (7)</span>
-                            </li>
-                            <li>
-                                <a href="#">Clothing</a><span> (21)</span
-                                ><span
-                                    class="opener-1 fa fa-plus pull-right"
-                                ></span>
-                                <ul class="toggle-1">
-                                    <li>
-                                        <a href="#">Hoodies</a
-                                        ><span> (20)</span>
-                                    </li>
-                                    <li>
-                                        <a href="#">T-shirts</a
-                                        ><span> (3)</span>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">Men's</a><span> (16)</span
-                                ><span
-                                    class="opener-2 fa fa-plus pull-right"
-                                ></span>
-                                <ul class="toggle-2">
-                                    <li>
-                                        <a href="#">Hats</a><span> (9)</span>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">Music</a><span> (11)</span
-                                ><span
-                                    class="opener-3 fa fa-plus pull-right"
-                                ></span>
-                                <ul class="toggle-3">
-                                    <li>
-                                        <a href="#">Albums</a><span> (1)</span>
-                                    </li>
-                                    <li>
-                                        <a href="#">Singles</a><span> (3)</span>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Posters</a><span> (7)</span></li>
-                            <li>
-                                <a href="#">Women's</a><span> (14)</span
-                                ><span
-                                    class="opener-4 fa fa-plus pull-right"
-                                ></span>
-                                <ul class="toggle-4">
-                                    <li>
-                                        <a href="#">Hats</a><span> (10)</span>
-                                    </li>
-                                </ul>
+                            <li v-for="category in $page.props.categories">
+                                <a :href="`products?category=${category.slug}`">
+                                    <i class="fa fa-star"></i>
+                                    {{ category.title }}
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -1228,12 +239,67 @@
                         </ul>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 </template>
 <script>
-export default {};
+import HeroSlider from "../../Components/HeroSlider.vue";
+import { mapActions, mapState } from "pinia";
+import { common_page_store } from "../../Shared/Store/index";
+
+export default {
+    components: { HeroSlider },
+    props: {
+        all_feature_products: Object,
+    },
+    data: () => ({
+        all_products: [],
+    }),
+    created() {
+        this.all_products = this.all_feature_products.original.data;
+    },
+    methods: {
+        ...mapActions(common_page_store, {
+            get_all_cart_data: "get_all_cart_data",
+        }),
+
+        addToCart: async function (productId) {
+            const response = await axios.post("add-to-cart", {
+                productId: productId,
+            });
+
+            if (response.data.status === "success") {
+                window.s_alert(response.data.message);
+                await this.get_all_cart_data();
+            }
+        },
+        addToWishList: async function (productId) {
+            const response = await axios.post("add-to-wish-list", {
+                productId: productId,
+            });
+
+            if (response.data.status === "success") {
+                window.s_alert(response.data.message);
+                this.get_all_cart_data();
+            }
+            if (response.data.status === "warning") {
+                window.w_alert(response.data.message);
+            }
+        },
+        addToCompareList: async function (productId) {
+            const response = await axios.post("add-to-compare-list", {
+                productId: productId,
+            });
+
+            if (response.data.status === "success") {
+                window.s_alert(response.data.message);
+            }
+            if (response.data.status === "warning") {
+                window.w_alert(response.data.message);
+            }
+        },
+    },
+};
 </script>
 <style lang="scss" scoped></style>

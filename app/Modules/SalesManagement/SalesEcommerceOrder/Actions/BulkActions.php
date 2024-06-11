@@ -10,24 +10,24 @@ class BulkActions
     {
         try {
             if (request()->input('action') == 'active') {
-                if (request()->input('ids') && count(request()->input('ids'))) {
-                    $ids = request()->input('ids');
-                    self::$model::whereIn('id', $ids)->update(['status' => 'active']);
+                if (request()->input('data') && count(request()->input('data'))) {
+                    $data = request()->input('data');
+                    self::$model::whereIn('id', $data)->update(['status' => 'active']);
                 }
                 return messageResponse("Items are activeted Successfully ");
             }
             if (request()->input('action') == 'inactive') {
-                if (request()->input('ids') && count(request()->input('ids'))) {
-                    $ids = request()->input('ids');
-                    self::$model::whereIn('id', $ids)->update(['status' => 'inactive']);
+                if (request()->input('data') && count(request()->input('data'))) {
+                    $data = request()->input('data');
+                    self::$model::whereIn('id', $data)->update(['status' => 'inactive']);
                     return messageResponse("Items are inactiveted Successfully ");
                 }
             }
 
             if (request()->input('action') == 'delete') {
-                if (request()->input('ids') && count(request()->input('ids'))) {
-                    $ids = request()->input('ids');
-                    self::$model::whereIn('id', $ids)->delete();
+                if (request()->input('data') && count(request()->input('data'))) {
+                    $data = request()->input('data');
+                    self::$model::whereIn('id', $data)->delete();
                     return messageResponse("Items are deleted Successfully ");
                 }
             }
