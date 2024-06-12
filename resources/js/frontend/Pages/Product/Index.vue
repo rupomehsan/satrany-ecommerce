@@ -3,8 +3,8 @@
         <div class="woocommerce-breadcrumb mtb-15">
             <div class="menu">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active"><a href="shop.html">Shop</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li class="active"><a href="/">Shop</a></li>
                 </ul>
             </div>
         </div>
@@ -78,7 +78,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-content">
+                    <div class="tab-content mb-5">
                         <div
                             role="tabpanel"
                             class="tab-pane fade show active"
@@ -104,13 +104,13 @@
                         </div>
                         <!-- woocommerce-pagination-area -->
 
-                        <div
+                        <!-- <div
                             class="woocommerce-pagination-area bg-fff box-shadow ptb-10 mb-30"
                         >
                             <div
                                 class="woocommerce-pagination text-center hover-bg"
                             >
-                                <ul>
+                                <ul >
                                     <li class="active"><a href="#">1</a></li>
                                     <li><a href="#">2</a></li>
                                     <li>
@@ -120,7 +120,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -145,7 +145,7 @@
                     </div>
                 </div>
                 <!-- filter-by-price-area start -->
-                <div class="filter-by-price-area mtb-30 bg-fff box-shadow">
+                <!-- <div class="filter-by-price-area mtb-30 bg-fff box-shadow">
                     <div
                         class="product-title home2-bg-1 text-uppercase home2-product-title"
                     >
@@ -177,9 +177,9 @@
                             <button>filter</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- size-area start -->
-                <div class="size-area bg-fff box-shadow">
+                <!-- <div class="size-area bg-fff box-shadow">
                     <div
                         class="product-title home2-bg-1 text-uppercase home2-product-title"
                     >
@@ -194,9 +194,9 @@
                             <li><a href="#">XS</a><span> (1)</span></li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
                 <!-- color-area start -->
-                <div class="color-area bg-fff box-shadow mtb-30">
+                <!-- <div class="color-area bg-fff box-shadow mtb-30">
                     <div
                         class="product-title home2-bg-1 text-uppercase home2-product-title"
                     >
@@ -210,7 +210,7 @@
                             <li><a href="#">White </a><span> (1)</span></li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="product-tags-area bg-fff box-shadow mtb-30">
                     <div
@@ -221,17 +221,7 @@
                     </div>
                     <div class="tags tag-menu hover-bg p-20">
                         <ul>
-                            <li><a href="#">commodo</a></li>
-                            <li><a href="#">enim</a></li>
                             <li><a href="#">fashion</a></li>
-                            <li><a href="#">Fly</a></li>
-                            <li><a href="#">Glasses</a></li>
-                            <li><a href="#">Hats</a></li>
-                            <li><a href="#">Hoodies</a></li>
-                            <li><a href="#">libero</a></li>
-                            <li><a href="#">men</a></li>
-                            <li><a href="#">Men's</a></li>
-                            <li><a href="#">Nam</a></li>
                             <li><a href="#">Popular</a></li>
                             <li><a href="#">Product</a></li>
                             <li><a href="#">version</a></li>

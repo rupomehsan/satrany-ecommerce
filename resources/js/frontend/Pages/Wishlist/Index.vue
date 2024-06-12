@@ -47,7 +47,7 @@
                                             class="product-thumbnail product-thumbnail-img hidden-sm hidden-xs"
                                         >
                                             <Link
-                                                :href="`product-details/${item.slug}`"
+                                                :href="`/product-details/${item.product?.slug}`"
                                             >
                                                 <img
                                                    :src="item.product?.images.length ? item.product?.images[0].url : 'dummy.png'"
@@ -57,7 +57,7 @@
                                         </td>
                                         <td class="product-name">
                                             <a
-                                                href="`product-details/${item.slug}`"
+                                                :href="`/product-details/${item.product?.slug}`"
                                                 >{{ item.product?.title }}
                                             </a>
                                         </td>

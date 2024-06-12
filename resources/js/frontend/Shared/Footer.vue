@@ -164,7 +164,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -178,7 +177,7 @@
                                 <a
                                     href="https://modernitsbd.com"
                                     title="Modern IT Solutions Bangladesh"
-                                    >Modern ITSBD</a
+                                    >Modern IT Solutions Bangladesh</a
                                 >
                             </p>
                         </div>

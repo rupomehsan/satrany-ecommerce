@@ -5,6 +5,7 @@ namespace App\Modules\ProductManagement\Product\Actions;
 class All
 {
     static $model = \App\Modules\ProductManagement\Product\Models\Model::class;
+    static $Catgorymodel = \App\Modules\ProductManagement\ProductCategory\Models\Model::class;
 
     public static function execute()
     {
@@ -12,8 +13,14 @@ class All
             // dd(request()->all());
             $offset = request()->input('offset') ?? 10;
             $condition = [];
-            $with = ['images','brand','category'];
+            $with = ['images', 'brand', 'category'];
             $data = self::$model::query();
+            if (request()->has('category') && request()->input('category')) {
+                $category = self::$Catgorymodel::query()->where('slug', request()->input('category'))->first();
+
+                $condition['category_id'] = $category->id;
+            }
+
             if (request()->has('status') && request()->input('status')) {
                 $condition['status'] = request()->input('status');
             }

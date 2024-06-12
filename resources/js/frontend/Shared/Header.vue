@@ -60,7 +60,7 @@
                                     height="100"
                                     width="100"
                                 />
-                                <span class="logo-title">Satrany </span>
+                                <span class="logo-title">Satrani </span>
                             </Link>
                         </div>
                     </div>

@@ -211,8 +211,12 @@
                         </div>
                         <div class="newsletter form-style plbr-15">
                             <p>Submit your mail to get events</p>
-                            <form action="#">
-                                <input type="email" placeholder="Email" />
+                            <form @submit.prevent="submitHandler">
+                                <input
+                                    type="email"
+                                    placeholder="Email"
+                                    required
+                                />
                                 <button>
                                     <i class="fa fa-paper-plane-o"></i>
                                 </button>
@@ -248,8 +252,14 @@
                         </div>
                         <div class="test-img floatleft">
                             <img
-                                src="frontend/assets/images/test/2.jpg"
+                                src="dummy.png"
                                 alt=""
+                                class="m-2 img-rounded"
+                                style="
+                                    height: 80px;
+                                    width: 80px;
+                                    border-radius: 50%;
+                                "
                             />
                         </div>
                         <div class="test-info">
@@ -268,8 +278,14 @@
                         </div>
                         <div class="test-img floatleft">
                             <img
-                                src="frontend/assets/images/test/1.jpg"
+                                src="dummy.png"
                                 alt=""
+                                class="m-2 img-rounded"
+                                style="
+                                    height: 80px;
+                                    width: 80px;
+                                    border-radius: 50%;
+                                "
                             />
                         </div>
                         <div class="test-info">
@@ -288,8 +304,14 @@
                         </div>
                         <div class="test-img floatleft">
                             <img
-                                src="frontend/assets/images/test/1.jpg"
+                                src="dummy.png"
                                 alt=""
+                                class="m-2 img-rounded"
+                                style="
+                                    height: 80px;
+                                    width: 80px;
+                                    border-radius: 50%;
+                                "
                             />
                         </div>
                         <div class="test-info">
@@ -308,8 +330,14 @@
                         </div>
                         <div class="test-img floatleft">
                             <img
-                                src="frontend/assets/images/test/2.jpg"
+                                src="dummy.png"
                                 alt=""
+                                class="m-2 img-rounded"
+                                style="
+                                    height: 80px;
+                                    width: 80px;
+                                    border-radius: 50%;
+                                "
                             />
                         </div>
                         <div class="test-info">

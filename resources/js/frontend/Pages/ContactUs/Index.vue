@@ -3,7 +3,7 @@
         <div class="google-map-area mb-50">
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3650.361848936657!2d90.3598975258983!3d23.80572853664901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sBaekmolla%2C%2060fet%2Cmirpur-2%2CDhaka%201216.!5e0!3m2!1sen!2sbd!4v1718033394621!5m2!1sen!2sbd"
-               class="w-100"
+                class="w-100"
                 height="450"
                 style="border: 0"
                 allowfullscreen=""
@@ -20,19 +20,20 @@
                                 <h2>Contact Us</h2>
                             </div>
                             <div class="contuct-form form-style">
-                                <form action="#">
+                                <form @submit.prevent="submitHandler">
                                     <span>Your Name (required)</span>
-                                    <input type="text" />
+                                    <input type="text" required />
                                     <span>Your Email (required)</span>
-                                    <input type="email" />
+                                    <input type="email" required />
                                     <span>Subject</span>
-                                    <input type="text" />
+                                    <input type="text" required />
                                     <span>Your Message</span>
                                     <textarea
                                         name="#"
                                         id="#"
                                         cols="30"
                                         rows="10"
+                                        required
                                     ></textarea>
                                     <button>send</button>
                                 </form>
@@ -71,6 +72,13 @@
     </div>
 </template>
 <script>
-export default {};
+export default {
+    methods: {
+        submitHandler($event) {
+            window.s_alert("Thank you for your message");
+            $event.target.reset();
+        },
+    },
+};
 </script>
 <style lang="scss" scoped></style>

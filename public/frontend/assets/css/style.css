@@ -80,7 +80,7 @@ span.logo-title {
     font-size: 20px;
     text-transform: uppercase;
     font-weight: 900;
-    background: -webkit-linear-gradient(rgb(46 49 146), rgb(212, 4, 4));
+    background: -webkit-linear-gradient(#560138, #F40096);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
