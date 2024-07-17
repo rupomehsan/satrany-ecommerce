@@ -20,6 +20,7 @@ include_once  base_path("app/Modules/ProductManagement/Product/Route.php");
 include_once  base_path("app/Modules/ProductManagement/ProductCategory/Route.php");
 include_once  base_path("app/Modules/ProductManagement/ProductBrand/Route.php");
 include_once  base_path("app/Modules/SalesManagement/SalesEcommerceOrder/Route.php");
+include_once  base_path("app/Modules/TrendingVideo/Route.php");
 
 include_once  base_path("app/Modules/Slider/Route.php");
 
@@ -27,4 +28,6 @@ include_once  base_path("app/Modules/Slider/Route.php");
 include_once  base_path("app/Modules/Cart/Route.php");
 include_once  base_path("app/Modules/WishList/Route.php");
 include_once  base_path("app/Modules/CompareList/Route.php");
+
+include_once  base_path("app/Modules/WebsiteSettings/Route.php");
 

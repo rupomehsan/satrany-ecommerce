@@ -88,7 +88,7 @@
                                                     <span class="amounte"
                                                         >{{
                                                             cart.product
-                                                                ?.price
+                                                                ?.current_price
                                                         }}
                                                         ৳</span
                                                     >
@@ -104,7 +104,7 @@
                                                 <td class="product-subtotal">
                                                     <span class="sub-total">{{
                                                         cart.product
-                                                            ?.price *
+                                                            ?.current_price *
                                                         cart.quantity
                                                     }}</span>
                                                 </td>
@@ -206,9 +206,7 @@ export default {
         cartItems: [],
         delivery_charge: 50,
     }),
-    created: async function () {
-        await this.get_all_cart_data();
-    },
+
     methods: {
         ...mapActions(common_page_store, {
             get_all_cart_data: "get_all_cart_data",

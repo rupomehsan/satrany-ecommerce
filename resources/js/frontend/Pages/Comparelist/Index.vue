@@ -62,12 +62,16 @@
                                             </a>
                                         </td>
                                         <td class="product-price">
-                                            <span class="amounte"
-                                                >{{
+                                            <del>{{
                                                     item.product
                                                         ?.price
-                                                }}
-                                                <!-- <del>$350.000</del> -->
+                                                }} </del>
+                                            <span class="amounte mx-2"
+                                                > {{
+                                                    item.product
+                                                        ?.current_price
+                                                }} TK
+
                                             </span>
                                         </td>
                                         <td class="product-quantity">

@@ -1,5 +1,13 @@
 <template>
     <div class="product-wrapper bl">
+        <template v-if="product.discount_type === 'amount'">
+            <div class="discount-badge">
+                {{ product.discount_amount }} TK OFF
+            </div>
+        </template>
+        <template v-else-if="product.discount_type === 'percentage'">
+            <div class="discount-badge">{{ product.discount_amount }}% OFF</div>
+        </template>
         <div class="product-img">
             <Link :href="`/product-details/${product.slug}`">
                 <img
@@ -26,6 +34,7 @@
                     <li>
                         <Link
                             href="#"
+                            preserve-scroll
                             @click.prevent="addToCart(product.id)"
                             role="button"
                             data-bs-toggle="tooltip"
@@ -40,6 +49,7 @@
                     <li>
                         <Link
                             href="#"
+                            preserve-scroll
                             @click.prevent="addToWishList(product.id)"
                             role="button"
                             data-bs-toggle="tooltip"
@@ -54,6 +64,7 @@
                     <li>
                         <Link
                             href="#"
+                            preserve-scroll
                             @click.prevent="addToCompareList(product.id)"
                             data-bs-toggle="tooltip"
                             role="button"
@@ -74,7 +85,7 @@
                     {{ product.title }}
                 </Link>
             </h3>
-            <ul>
+            <!-- <ul>
                 <li>
                     <i class="fa fa-star"></i>
                 </li>
@@ -90,8 +101,19 @@
                 <li>
                     <i class="fa fa-star"></i>
                 </li>
-            </ul>
-            <span>{{ product.price }} ৳</span>
+            </ul> -->
+            <div class="d-flex gap-3">
+
+                <span>Price : {{ product.current_price }} ৳</span>
+                <span v-if="product.discount_type && product.discount_amount"
+                    >
+                    <del
+
+                    >
+                        {{ product.price }} ৳</del
+                    ></span
+                >
+            </div>
         </div>
     </div>
 </template>
@@ -151,4 +173,19 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.product-wrapper {
+    position: relative;
+    .discount-badge {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background: #e74c3c;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        z-index: 1;
+    }
+}
+</style>

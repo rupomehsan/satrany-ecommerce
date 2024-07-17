@@ -1042,7 +1042,7 @@ a#scrollUp,
     margin: 0 8px;
 }
 .offcanvas-body .account-menu ul li a {
-    color: #383838;
+    color: #383838 !important;
     font-size: 13px;
     font-weight: 500;
 }

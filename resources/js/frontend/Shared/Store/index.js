@@ -16,7 +16,7 @@ export const common_page_store = defineStore("common_page_store", {
             this.all_cart_data = response.data.data;
             if (this.all_cart_data) {
                 let itemTotal = this.all_cart_data.map(
-                    (item) => item.quantity * item.product?.price
+                    (item) => item.quantity * item.product?.current_price
                 );
                 itemTotal.forEach((item2) => {
                     this.total_cart_price = this.total_cart_price + item2;

@@ -71,7 +71,7 @@
                                 <div
                                     class="product-content simple-product-content mb-10"
                                 >
-                                    <ul>
+                                    <!-- <ul>
                                         <li><i class="fa fa-star"></i></li>
                                         <li><i class="fa fa-star"></i></li>
                                         <li><i class="fa fa-star"></i></li>
@@ -80,16 +80,25 @@
                                     </ul>
                                     <span class="text-sm mx-2"
                                         >(3 reviews)</span
-                                    >
+                                    > -->
                                     <br />
-                                    <span
-                                        ><del>{{
-                                            productDetails.maximum_sale_price
-                                        }}</del
-                                        ><span>{{
-                                            productDetails.price
-                                        }}</span></span
-                                    >
+                                    <div class="d-flex gap-3">
+                                        <span
+                                            v-if="
+                                            productDetails.discount_type &&
+                                            productDetails.discount_amount
+                                            "
+                                            >Old price :
+                                            <del>
+                                                {{ productDetails.price }} ৳</del
+                                            ></span
+                                        >
+                                        <span>
+                                            Price :
+                                            {{ productDetails.current_price }} ৳</span
+                                        >
+                                    </div>
+
                                 </div>
                                 <p>
                                     {{ productDetails.short_description }}
@@ -163,7 +172,7 @@
                                     >
                                         <b>Brand : </b>
                                         <a href="#">{{
-                                            productDetails.brand.title
+                                            productDetails.brand?.title
                                         }}</a>
                                     </div>
 
@@ -533,7 +542,8 @@ export default {
         return {
             productDetails: this.productDetailsData,
             quantity: 1,
-            prodictDetailsImages: this.productDetailsData.images[0].url,
+            prodictDetailsImages:
+                this.productDetailsData.images[0]?.url ?? "dummy.png",
         };
     },
     created() {

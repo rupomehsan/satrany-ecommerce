@@ -13,9 +13,11 @@ class Model extends EloquentModel
 
     protected $table = "products";
     protected $guarded = [];
+    protected $appends = ['current_price', 'amount_in_percent'];
 
     protected static function booted()
     {
+
         static::created(function ($data) {
             $random_no = random_int(100, 999) . $data->id . random_int(100, 999);
             $slug = $data->title . " " . $random_no;
@@ -32,13 +34,47 @@ class Model extends EloquentModel
     {
         return $q->where('status', 'active');
     }
-    public function images(){
-        return $this->hasMany(self::$ImageModel,'product_id');
+    public function images()
+    {
+        return $this->hasMany(self::$ImageModel, 'product_id');
     }
-    public function category(){
-        return $this->belongsTo(self::$CategoryModel,'category_id');
+    public function category()
+    {
+        return $this->belongsTo(self::$CategoryModel, 'category_id');
     }
-    public function brand(){
-        return $this->belongsTo(self::$BrandModel,'brand_id');
+    public function brand()
+    {
+        return $this->belongsTo(self::$BrandModel, 'brand_id');
+    }
+
+    public function getCurrentPriceAttribute()
+    {
+        $price = $this->price;;
+        if ($this->discount_type  && $this->discount_amount) {
+            switch ($this->discount_type) {
+                case 'percentage':
+                    $price = $this->price - ($this->price * $this->discount_amount) / 100;
+                    break;
+                case 'amount':
+                    $price = $this->price - $this->discount_amount;
+                    break;
+                default:
+                    $price = $this->price;
+                    break;
+            }
+        }
+        return  floor($price);
+    }
+
+    public function getAmountInPercentAttribute()
+    {
+        if (($this->discount_amount && $this->discount_type) && $this->discount_type != 'percent') {
+            switch ($this->discount_type) {
+                case 'amount':
+                    return ($this->discount_amount / $this->price) * 100;
+            }
+        }
+
+        return 0;
     }
 }

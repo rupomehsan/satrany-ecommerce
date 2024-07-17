@@ -40,12 +40,12 @@ class Store
                         $productInfo = [
                             'sales_ecommerce_order_id' => $order->id,
                             'product_id' => $item->product_id,
-                            'product_price' => $product->price,
+                            'product_price' => $product->current_price,
                             'qty' => $item->quantity,
-                            'subtotal' => $product->price * $item->quantity,
+                            'subtotal' => $product->current_price * $item->quantity,
                         ];
                         self::$OrderProductsModel::create($productInfo);
-                        $orderTotal += $product->price * $item->quantity;
+                        $orderTotal += $product->current_price * $item->quantity;
                     }
                     $order->subtotal = $orderTotal;
                     $order->total = $orderTotal + $order->delivery_charge;

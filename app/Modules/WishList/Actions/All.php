@@ -16,7 +16,7 @@ class All
 
             $offset = request()->input('offset') ?? 10;
             $condition = [];
-            $with = ['product:id,title,price,slug', 'product.images'];
+            $with = ['product:id,title,price,slug,discount_type,discount_amount','product.images'];
             $data = self::$model::query();
 
             $sessionId = $_SESSION['sessionId'] ?? session_id();

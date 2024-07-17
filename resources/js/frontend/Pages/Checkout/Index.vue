@@ -240,7 +240,7 @@
                                                 <span
                                                     >{{
                                                         cart.quantity *
-                                                        cart.product?.price
+                                                        cart.product?.current_price
                                                     }}
                                                     ৳</span
                                                 >
@@ -317,7 +317,7 @@ export default {
                 "delivery_charge"
             ) ?? 50;
 
-        await this.get_all_cart_data();
+
     },
     methods: {
         ...mapActions(common_page_store, {

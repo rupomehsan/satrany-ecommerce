@@ -231,7 +231,49 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-9">
+            <!-- testimonils-area start -->
+            <div class="testimonils-area box-shadow mtb-35 bg-fff">
+                <div class="product-title home3-bg text-uppercase">
+                    <i class="fa fa-star-o icon home3-bg2"></i>
+                    <h3>Our Trending Video</h3>
+                </div>
+                <div class="row  justify-content-center">
+                    <div class="col-md-6" v-for="item in all_trending_video">
+                        <div
+                            class="testmonial-active home2 right left-right-angle mx-5 card m-3"
+                        >
+                            <template v-if="item.type == 'youtube_link'">
+                                <iframe
+                                    class="w-100"
+                                    height="400"
+                                    :src="`https://www.youtube.com/embed/${item.url.split('v=')[1]}`"
+                                    frameborder="0"
+                                ></iframe>
+                            </template>
+                            <template v-else>
+                                <video
+                                   class="w-100"
+                                    height="400"
+                                    controls
+
+                                >
+                                    <source
+                                        :src="`/uploads/${item.url}`"
+                                        type="video/mp4"
+                                    />
+                                </video>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- testimonils-area end -->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-9">
             <!-- testimonils-area start -->
             <div class="testimonils-area box-shadow mtb-35 bg-fff">
                 <div class="product-title home3-bg text-uppercase">
@@ -414,9 +456,12 @@ export default {
     },
     data: () => ({
         all_products: [],
+        all_trending_video: [],
     }),
-    created() {
+    created: async function () {
         this.all_products = this.all_feature_products.original.data;
+        console.log(this.all_products);
+        await this.get_all_trending_video();
     },
     methods: {
         ...mapActions(common_page_store, {
@@ -457,6 +502,10 @@ export default {
             if (response.data.status === "warning") {
                 window.w_alert(response.data.message);
             }
+        },
+        get_all_trending_video: async function () {
+            let response = await axios.get("trending-videos?get_all=1");
+            this.all_trending_video = response.data.data;
         },
     },
 };

@@ -86,6 +86,11 @@
                     },
                 ]"
             />
+            <side-bar-single-menu
+                :menu_title="`Trending Video`"
+                :route_name="`AllTrendingVideo`"
+                :icon="`fa fa-plus`"
+            />
         </ul>
     </div>
 </template>

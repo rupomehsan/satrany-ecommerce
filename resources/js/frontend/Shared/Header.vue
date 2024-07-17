@@ -23,7 +23,9 @@
                                         >
                                     </li>
                                     <li>
-                                        <Link href="/wishlist" class="text-white"
+                                        <Link
+                                            href="/wishlist"
+                                            class="text-white"
                                             >Wishlist</Link
                                         >
                                     </li>
@@ -129,12 +131,12 @@
 
                     <div class="col-xl-2 col-lg-3 col-7 d-lg-none">
                         <div class="header-actions">
-                            <div class="top-cart home3-bg">
+                            <div class="top-cart home3-bg ">
                                 <div class="cart">
                                     <i class="icofont icofont-bag"></i>
-                                    <a href="#" class="mx-2">
+                                    <a href="#" class="">
                                         {{ all_cart_data.length }} Items -
-                                        <strong class="mx-2"
+                                        <strong class=""
                                             >{{ total_cart_price }} ৳</strong
                                         >
                                         <i
@@ -189,12 +191,12 @@
                                                     <span
                                                         >{{ cart.quantity }} x
                                                         {{
-                                                            cart.product?.price
+                                                            cart.product?.current_price
                                                         }}
                                                         =
                                                         {{
                                                             cart.quantity *
-                                                            cart.product?.price
+                                                            cart.product?.current_price
                                                         }}
                                                         ৳</span
                                                     >
@@ -325,11 +327,11 @@
                                                 </a>
                                                 <span
                                                     >{{ cart.quantity }} x
-                                                    {{ cart.product?.price }}
+                                                    {{ cart.product?.current_price }}
                                                     =
                                                     {{
                                                         cart.quantity *
-                                                        cart.product?.price
+                                                        cart.product?.current_price
                                                     }}
                                                     ৳</span
                                                 >
@@ -371,7 +373,9 @@ export default {
 
         await this.get_all_cart_data();
         await this.get_all_categories();
+        await this.visitor_count();
     },
+
     methods: {
         ...mapActions(common_page_store, {
             get_all_cart_data: "get_all_cart_data",
@@ -387,6 +391,10 @@ export default {
         },
         searchHandler: function () {
             window.location.href = `products?search=${this.search}`;
+        },
+        visitor_count: async function () {
+            let response = await axios.get(`/visitor-count`);
+            response = response.data.data;
         },
     },
     computed: {
@@ -405,5 +413,12 @@ export default {
 </script>
 
 <style scoped>
-/* Add your styles here */
+@media (max-width: 575.98px) {
+    .d-custom-sm-none {
+        display: none !important;
+    }
+    .header-actions {
+    margin-top: 0px;
+}
+}
 </style>
